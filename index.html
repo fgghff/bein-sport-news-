@@ -1,35 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="ar">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open URL Video in xPola Player</title>
-    <meta name="description" content="Experience seamless video playback with Xpola Player. Our page allows you to effortlessly play video URLs, offering high-quality streaming with minimal buffering. Perfect for viewers seeking an optimized watching experience. Click to enjoy your favorite videos now.">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png" />
-	<meta property="og:image" content=""/>
 
-<style> body { display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #000;
-    background-image: url('');
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-position: center; 
+  <meta charset="UTF-8">
 
- } .play-button { background-color: #f7f7f7; color: #fff; border: none; padding: 10px; font-size: 24px; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; } .play-button:hover { background-color: #999; } .message-box { background-color: #333; border-radius: 8px; padding: 20px; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; z-index: 1000; } .message-box p { margin: 0 0 20px; color: #ecf0f1; } } .message-box .actions { margin-top: 20px; } .message-box button { background-color: transparent; border: none; color: #f40; font-size: 16px; margin: 0 10px; padding: 6px; cursor: pointer; } .message-box button:hover { text-decoration: underline; } .message-box .checkbox-container { display: flex; align-items: center; justify-content: center; margin-top: 20px; } .message-box .checkbox-container input { margin-right: 10px; } label { color: #9E9E9E; } 
+  <title>JWPlayer DRM Setup - MPD Only</title>
 
-</style>
+  <script src="https://content.jwplatform.com/libraries/Z79JsmAO.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <script src="https://developer-tools.jwplayer.com/js/tools.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ربط مكتبة Font Awesome -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+
+    html, body { 
+
+      margin: 0; 
+
+      padding: 0; 
+
+      height: 100%; 
+
+      overflow: hidden; 
+
+      background-color: #000;
+
+      font-family: 'Cairo', sans-serif;
+
+    }
+
+    .jwplayer { position: relative; width: 100%; height: 100%; }
+
+    .jwplayer .jw-media video { width: 100%; height: 100%; object-fit: fill; }
+
+  </style>
 
 </head>
+
 <body>
 
-<button onClick="location.href='intent://XPOLA808eGRkYGMqPz92fHFoPX11dHlxPnN/fT9meXR1fz1jeHF7cT92fHFoPWB8cWl1Yj5geGAveXQteGRkYGM1I1E1IlY1IlZ8eWZ1PXQ9ICI9ZH90ZGY9dHI+cXtxfXF5anV0Pn51ZDUiVmZxYnlxfmQ1IlZmIXJ8cXN7f2VkNSJWY2B/PXh0PSMoPXQ9Y3h/YmR0ZmI1IlZUUUNYT1RRQ1g1IlZceWZ1NSJWc3hxfn51fDUiKGNgfz14dD0jKTUiKTUiVnh0fmR8NSNUdWhgNSNUISckIiIhJSMmJW5xc3w1I1Q1IiUidmZxYnlxfmQ1IiUidmYhcnxxc3t/ZWQ1IiUidmNgfz14dD0jKD10PWN4f2JkdGZiNSIlInY1IlFueXQ1I1R0Skh0Ilh3XEJcXyVxJkJ9aSNqJSJnbnRxZHE1I1R4dH5kfDUiU3MpJiclISUiPSMoIXY9JCBxJT1yInEgPSJ1cnEkdHF2JyAgcW54fXFzNSNUcSQkIiEkKHZyc3J1KHYoJnIpJSJ1JikgIHMmInZ0cnUndHIpISEjcXF1IXZ2ISchISAhJHInIXYpdCMgKHIoIzUiVn1xfnl2dWNkPn1gdDZ7dWktIHEnKSMkdHR0cyMhIyZxJikiIiUoJHIpJnMjdnQhdSUqJicmdSZ0IXR0ICBydnJ1IiYmICAjdXZxdiB1I3FxICI2fH93fy02fHl+ey1sYHxxaXViPWRpYHUtZ3VyYHxxaXVibGR5ZHx1LXJ1eX4wY2B/YmQwfnVnYw==;#Intent;scheme=xmtv;package=com.xpola.player;end'" class="play-button">
-<svg fill="#000000" height="80px" width="80px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
-    <g>
-        <path d="M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30 c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15 C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z"/>
-        <path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30 S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z"/>
-    </g>
-</svg>
-</button>
-</body>
-</html>
+  <!-- منطقة عرض المشغل -->
+
+  <div id="my-jwplayer"></div>
+
+  
+
+  <script>
+
+    // تعريف متغير حالة التمدد
+
+    let isExpanded = false;
 
     
+
+    // رمز SVG لزر التمدد
+
+    const expandSvg = `<svg fill="#7f8c8d" version="1.1" id="expand_icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 100 100" xml:space="preserve">
+
+      <g>
+
+        <path d="M22.661,20.5H36c1.104,0,2-0.896,2-2s-0.896-2-2-2H19c-1.104,0-2.5,1.276-2.5,2.381v17c0,1.104,0.896,2,2,2s2-0.896,2-2V24.876l16.042,15.791c0.391,0.391,1.027,0.586,1.539,0.586s1.086-0.195,1.477-0.586c0.781-0.781,0.812-2.237,0.031-3.019L22.661,20.5z"/>
+
+        <path d="M83,16.5H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h12.605L61.647,37.648c-0.781,0.781-0.781,2.142,0,2.923c0.39,0.391,0.902,0.633,1.414,0.633s0.774-0.171,1.164-0.562l16.274-16.5v11.738c0,1.104,0.896,2,2,2s2-0.896,2-2v-17C84.5,17.776,84.104,16.5,83,16.5z"/>
+
+        <path d="M36.542,60.962L20.5,76.754V65.881c0-1.104-0.896-2-2-2s-2,0.896-2,2v17c0,1.104,1.396,1.619,2.5,1.619h17c1.104,0,2-0.896,2-2s-0.896-2-2-2H22.529L39.62,63.6c0.781-0.781,0.656-1.951-0.125-2.732C38.715,60.086,37.322,60.181,36.542,60.962z"/>
+
+        <path d="M82.5,63.881c-1.104,0-2,0.896-2,2v11.606L64.226,60.962c-0.78-0.781-1.923-0.781-2.703,0c-0.781,0.781-0.719,1.856,0.062,2.638l17.152,16.9H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h17c1.104,0,1.5-0.515,1.5-1.619v-17C84.5,64.776,83.604,63.881,82.5,63.881z"/>
+
+      </g>
+
+    </svg>`;
+
+    
+
+    // دالة تهيئة المشغل مع إعدادات DRM
+
+    function setupPlayer(drmType = 'clearkey') {
+
+      const playerConfig = {
+
+        file: "https://todtv-live-spo-prod.akamaized.net/Content/Channel/svc-spo-hd-08-dt/DASH/playlist.mpd?hdnts=st=1742597885~exp=1742774285~acl=*/Content/Channel/svc-spo-hd-08-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OS4xNzQuMjQz~hmac=0e6db30baa56ffd5915c4a3b3928dce473706f254debef84e9045b0f37b60ed3",
+
+        width: "100%",
+
+        height: "100%",
+
+        autostart: true,
+
+        mute: true,
+
+        skin: {
+
+          name: "seven",
+
+          active: "#9b8d8d",
+
+          inactive: "#7f8c8d",
+
+          background: "#1e1e1e"
+
+        },
+
+        ui: {
+
+          controlbar: {
+
+            children: [
+
+              'playButton',
+
+              'previousButton',
+
+              'nextButton',
+
+              'timeSlider',
+
+              'currentTimeDisplay',
+
+              'durationDisplay',
+
+              'muteButton',
+
+              'volumeButton',
+
+              'captionsButton',
+
+              'qualityButton',
+
+              'playbackRateButton',
+
+              'settingsButton',
+
+              'shareButton',
+
+              'expandButton',
+
+              'fullscreenButton'
+
+            ]
+
+          }
+
+        }
+
+      };
+
+      
+
+      if (drmType === 'clearkey') {
+
+        playerConfig.drm = {
+
+          clearkey: {
+
+            keyId: "7faafe485db7395b9583222a3a6e789d",
+
+            key: "163906ba32dd3d611aad5789cbd00858"
+
+          }
+
+        };
+
+      } else if (drmType === 'clearKeys') {
+
+        playerConfig.drm = {
+
+          clearKeys: {
+
+            "7faafe485db7395b9583222a3a6e789d": "163906ba32dd3d611aad5789cbd00858"
+
+          }
+
+        };
+
+      }
+
+      
+
+      return jwplayer("my-jwplayer").setup(playerConfig);
+
+    }
+
+    
+
+    // التهيئة الأولية للمشغل
+
+    var player = setupPlayer('clearkey');
+
+    
+
+    // إضافة زر التمدد إلى شريط التحكم
+
+    player.addButton(
+
+      expandSvg,
+
+      'تمدد الفيديو',
+
+      function() { toggleExpand(); },
+
+      'expandButton'
+
+    );
+
+    
+
+    function toggleExpand() {
+
+      const videoElement = document.querySelector("#my-jwplayer video");
+
+      if (!videoElement) return;
+
+      videoElement.style.objectFit = isExpanded ? 'fill' : 'contain';
+
+      isExpanded = !isExpanded;
+
+      updateExpandButtonTooltip();
+
+    }
+
+    
+
+    function updateExpandButtonTooltip() {
+
+      const button = document.querySelector('.jw-expandButton');
+
+      if (button) {
+
+        button.setAttribute('aria-label', isExpanded ? 'تصغير الفيديو' : 'تمدد الفيديو');
+
+      }
+
+    }
+
+    
+
+  //  window.onload = function() {
+
+  //    const videoElement = document.querySelector('#my-jwplayer video');
+
+  //    if (videoElement) { videoElement.style.objectFit = 'fill'; }
+
+  //    const soundToggleButton = document.createElement('button');
+
+  //    soundToggleButton.id = 'sound-toggle';
+
+   //   soundToggleButton.innerHTML = '<i class="fas fa-volume-mute"></i> تفعيل الصوت';
+
+   //   document.body.appendChild(soundToggleButton);
+
+      
+
+   //   soundToggleButton.addEventListener('click', function() {
+
+   //     const currentMute = player.getMute();
+
+   //     player.setMute(!currentMute);
+
+   //     soundToggleButton.innerHTML = !currentMute 
+
+    //      ? '<i class="fas fa-volume-mute"></i> تفعيل الصوت'
+
+   //       : '<i class="fas fa-volume-up"></i> كتم الصوت';
+
+  //    });
+
+   // };
+
+    
+
+    player.on('pause', function() { player.play(); });
+
+    
+
+    window.addEventListener("beforeunload", function () { player.stop(); });
+
+    document.addEventListener("visibilitychange", function() {
+
+      if (document.hidden) { player.stop(); }
+
+    });
+
+    
+
+    player.on('error', function(error) {
+
+      console.error("فشلت طريقة clearkey (" + error.message + ")، سيتم استخدام clearKeys كخطة بديلة");
+
+      jwplayer("my-jwplayer").remove();
+
+      player = setupPlayer('clearKeys');
+
+      player.addButton(expandSvg, 'تمدد الفيديو', function() { toggleExpand(); }, 'expandButton');
+
+    });
+
+  </script>
+
+<script src="https://www.drv.tw/inc/wd.js?s=kwcmfsyk8gjgzexem2p2cq"></script></body>
+
+</html>
+
