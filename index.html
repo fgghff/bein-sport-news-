@@ -1,314 +1,114 @@
 <!DOCTYPE html>
-
 <html lang="ar">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <title>JWPlayer DRM Setup - MPD Only</title>
-
+  <title>حمادة TV</title>
+   <link rel="icon" href="https://raw.githubusercontent.com/1ffu1/hamada-tv/refs/heads/main/logo.png">
   <script src="https://content.jwplatform.com/libraries/Z79JsmAO.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
   <script src="https://developer-tools.jwplayer.com/js/tools.min.js"></script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ربط مكتبة Font Awesome -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
   <style>
-
-    html, body { 
-
-      margin: 0; 
-
-      padding: 0; 
-
-      height: 100%; 
-
-      overflow: hidden; 
-
-      background-color: #000;
-
-      font-family: 'Cairo', sans-serif;
-
-    }
-
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
     .jwplayer { position: relative; width: 100%; height: 100%; }
-
     .jwplayer .jw-media video { width: 100%; height: 100%; object-fit: fill; }
-
+    /* إضافة تأثير ضبابي لخلفية مشغل JWPlayer */
+    .jw-controlbar.jw-reset , .jw-reset.jw-settings-menu , .resizeButton
+    {
+      background: #00000043; /* لون الخلفية المطلوب */
+      backdrop-filter: blur(10px); /* إضافة تأثير الضبابية */
+      -webkit-backdrop-filter: blur(10px); /* دعم للمستعرضات القديمة */
+    }
+    #resizeButton { position: absolute; top: 20px; left: 20px; background-color: rgba(0,0,0,0.4); color: white; border: none; padding: 10px 15px; font-size: 16px; cursor: pointer; border-radius: 5px; z-index: 9999; }
+    #resizeButton:hover { background-color: rgba(0,0,0,0.6); }
   </style>
-
 </head>
-
 <body>
-
-  <!-- منطقة عرض المشغل -->
-
+  <button id="resizeButton" class="resizeButton">
+    <i class="fas fa-compress"></i>
+  </button>
   <div id="my-jwplayer"></div>
-
-  
-
+   
   <script>
-
-    // تعريف متغير حالة التمدد
-
-    let isExpanded = false;
-
-    
-
-    // رمز SVG لزر التمدد
-
-    const expandSvg = `<svg fill="#7f8c8d" version="1.1" id="expand_icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 100 100" xml:space="preserve">
-
-      <g>
-
-        <path d="M22.661,20.5H36c1.104,0,2-0.896,2-2s-0.896-2-2-2H19c-1.104,0-2.5,1.276-2.5,2.381v17c0,1.104,0.896,2,2,2s2-0.896,2-2V24.876l16.042,15.791c0.391,0.391,1.027,0.586,1.539,0.586s1.086-0.195,1.477-0.586c0.781-0.781,0.812-2.237,0.031-3.019L22.661,20.5z"/>
-
-        <path d="M83,16.5H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h12.605L61.647,37.648c-0.781,0.781-0.781,2.142,0,2.923c0.39,0.391,0.902,0.633,1.414,0.633s0.774-0.171,1.164-0.562l16.274-16.5v11.738c0,1.104,0.896,2,2,2s2-0.896,2-2v-17C84.5,17.776,84.104,16.5,83,16.5z"/>
-
-        <path d="M36.542,60.962L20.5,76.754V65.881c0-1.104-0.896-2-2-2s-2,0.896-2,2v17c0,1.104,1.396,1.619,2.5,1.619h17c1.104,0,2-0.896,2-2s-0.896-2-2-2H22.529L39.62,63.6c0.781-0.781,0.656-1.951-0.125-2.732C38.715,60.086,37.322,60.181,36.542,60.962z"/>
-
-        <path d="M82.5,63.881c-1.104,0-2,0.896-2,2v11.606L64.226,60.962c-0.78-0.781-1.923-0.781-2.703,0c-0.781,0.781-0.719,1.856,0.062,2.638l17.152,16.9H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h17c1.104,0,1.5-0.515,1.5-1.619v-17C84.5,64.776,83.604,63.881,82.5,63.881z"/>
-
-      </g>
-
-    </svg>`;
-
-    
-
-    // دالة تهيئة المشغل مع إعدادات DRM
-
-    function setupPlayer(drmType = 'clearkey') {
-
-      const playerConfig = {
-
-        file: "https://todtv-live-ent-prod.akamaized.net/Content/Channel/svc-spo-hd-39-dt/DASH/playlist_tv.mpd?hdnts=st=1742598211~exp=1742774611~acl=*/Content/Channel/svc-spo-hd-39-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OS4xNzQuMjQz~hmac=bfd589f6b4d6b6b621384f62641f482461cec8da60d73cf9d5b67a0ddfc85adfl/svc-spo-hd-08-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OS4xNzQuMjQz~hmac=0e6db30baa56ffd5915c4a3b3928dce473706f254debef84e9045b0f37b60ed3",
-
-        width: "100%",
-
-        height: "100%",
-
-        autostart: true,
-
-        mute: true,
-
-        skin: {
-
-          name: "seven",
-
-          active: "#9b8d8d",
-
-          inactive: "#7f8c8d",
-
-          background: "#1e1e1e"
-
-        },
-
-        ui: {
-
-          controlbar: {
-
-            children: [
-
-              'playButton',
-
-              'previousButton',
-
-              'nextButton',
-
-              'timeSlider',
-
-              'currentTimeDisplay',
-
-              'durationDisplay',
-
-              'muteButton',
-
-              'volumeButton',
-
-              'captionsButton',
-
-              'qualityButton',
-
-              'playbackRateButton',
-
-              'settingsButton',
-
-              'shareButton',
-
-              'expandButton',
-
-              'fullscreenButton'
-
-            ]
-
-          }
-
+    // استخراج الرابط من معلمات URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoUrl = "https://todtv-live-ent-prod.akamaized.net/Content/Channel/svc-spo-hd-39-dt/DASH/playlist_tv.mpd?hdnts=st=1742598211~exp=1742774611~acl=*/Content/Channel/svc-spo-hd-39-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OS4xNzQuMjQz~hmac=bfd589f6b4d6b6b621384f62641f482461cec8da60d73cf9d5b67a0ddfc85adf"; // الحصول على قيمة videoUrl من URL
+    // إذا لم يتم تقديم رابط، يتم استخدام الرابط الذي قدمته
+    const defaultVideoUrl = "https://hamada-tv.com/none.mp4";
+    const finalVideoUrl = videoUrl || defaultVideoUrl; // استخدام الرابط من URL أو الرابط الافتراضي
+    // إعداد اللاعب باستخدام الرابط النهائي
+    var player = jwplayer("my-jwplayer").setup({
+      file: finalVideoUrl, // استخدام الرابط النهائي
+      width: "100%",
+      height: "100%",
+      repeat: true,
+      volume: 100,
+      autostart: true,
+      mute: false,
+      
+      drm: {
+        clearkey: {
+          keyId: "7faafe485db7395b9583222a3a6e789d",
+          key: "163906ba32dd3d611aad5789cbd00858"
         }
-
-      };
-
-      
-
-      if (drmType === 'clearkey') {
-
-        playerConfig.drm = {
-
-          clearkey: {
-
-            keyId: "7faafe485db7395b9583222a3a6e789d",
-
-            key: "163906ba32dd3d611aad5789cbd00858"
-
-          }
-
-        };
-
-      } else if (drmType === 'clearKeys') {
-
-        playerConfig.drm = {
-
-          clearKeys: {
-
-            "7faafe485db7395b9583222a3a6e789d": "163906ba32dd3d611aad5789cbd00858"
-
-          }
-
-        };
-
+      },
+      skin: {
+        name: "seven",
+        active: "#FFA000",
+        inactive: "#ffffffc9",
+        background: "#00000020"
       }
-
-      
-
-      return jwplayer("my-jwplayer").setup(playerConfig);
-
-    }
-
-    
-
-    // التهيئة الأولية للمشغل
-
-    var player = setupPlayer('clearkey');
-
-    
-
-    // إضافة زر التمدد إلى شريط التحكم
-
-    player.addButton(
-
-      expandSvg,
-
-      'تمدد الفيديو',
-
-      function() { toggleExpand(); },
-
-      'expandButton'
-
-    );
-
-    
-
-    function toggleExpand() {
-
-      const videoElement = document.querySelector("#my-jwplayer video");
-
-      if (!videoElement) return;
-
-      videoElement.style.objectFit = isExpanded ? 'fill' : 'contain';
-
-      isExpanded = !isExpanded;
-
-      updateExpandButtonTooltip();
-
-    }
-
-    
-
-    function updateExpandButtonTooltip() {
-
-      const button = document.querySelector('.jw-expandButton');
-
-      if (button) {
-
-        button.setAttribute('aria-label', isExpanded ? 'تصغير الفيديو' : 'تمدد الفيديو');
-
-      }
-
-    }
-
-    
-
-  //  window.onload = function() {
-
-  //    const videoElement = document.querySelector('#my-jwplayer video');
-
-  //    if (videoElement) { videoElement.style.objectFit = 'fill'; }
-
-  //    const soundToggleButton = document.createElement('button');
-
-  //    soundToggleButton.id = 'sound-toggle';
-
-   //   soundToggleButton.innerHTML = '<i class="fas fa-volume-mute"></i> تفعيل الصوت';
-
-   //   document.body.appendChild(soundToggleButton);
-
-      
-
-   //   soundToggleButton.addEventListener('click', function() {
-
-   //     const currentMute = player.getMute();
-
-   //     player.setMute(!currentMute);
-
-   //     soundToggleButton.innerHTML = !currentMute 
-
-    //      ? '<i class="fas fa-volume-mute"></i> تفعيل الصوت'
-
-   //       : '<i class="fas fa-volume-up"></i> كتم الصوت';
-
-  //    });
-
-   // };
-
-    
-
-    player.on('pause', function() { player.play(); });
-
-    
-
-    window.addEventListener("beforeunload", function () { player.stop(); });
-
-    document.addEventListener("visibilitychange", function() {
-
-      if (document.hidden) { player.stop(); }
-
     });
-
-    
-
+    // في حال حدوث خطأ أثناء التشغيل باستخدام clearkey، يتم إعادة تهيئة اللاعب باستخدام clearKeys
     player.on('error', function(error) {
-
-      console.error("فشلت طريقة clearkey (" + error.message + ")، سيتم استخدام clearKeys كخطة بديلة");
-
+      console.error("الطريقة الأولى فشلت (" + error.message + ")، سيتم استخدام طريقة clearKeys");
+      player.setTextTrackVisibility(true);
       jwplayer("my-jwplayer").remove();
-
-      player = setupPlayer('clearKeys');
-
-      player.addButton(expandSvg, 'تمدد الفيديو', function() { toggleExpand(); }, 'expandButton');
-
+      jwplayer("my-jwplayer").setup({
+        file: finalVideoUrl, // استخدام الرابط النهائي
+        repeat: true,
+        width: "100%",
+        height: "100%",
+        volume: 100,
+        autostart: true,
+        mute: false,
+        drm: {
+          clearKeys: {
+            "0a7934dddc3136a6922584b96c3fd1e5": "676e6d1dd00bfbe266003efaf0e3aa02"
+          }
+        },
+        skin: {
+          name: "seven",
+          active: "#FFA000",
+          inactive: "#7f8c8d",
+          background: "#00000020"
+        }
+      });
     });
-
+    // ضبط خاصية object-fit للفيديو عند تحميل الصفحة
+    window.onload = function() {
+      const videoElement = document.querySelector('.jwplayer .jw-media video');
+      if (videoElement) {
+        videoElement.style.objectFit = 'fill';
+      }
+    };
+    // وظيفة تغيير حجم الفيديو عند الضغط على زر التكبير/التصغير
+    let isZoomed = false;
+    document.getElementById('resizeButton').addEventListener('click', function() {
+      const videoElement = document.querySelector('.jwplayer .jw-media video');
+      if (videoElement) {
+        if (!isZoomed) {
+          videoElement.style.objectFit = 'contain';
+          document.querySelector('#resizeButton i').className = 'fas fa-expand';
+        } else {
+          videoElement.style.objectFit = 'fill';
+          document.querySelector('#resizeButton i').className = 'fas fa-compress';
+        }
+        isZoomed = !isZoomed;
+      }
+    });
   </script>
-
-<script src="https://www.drv.tw/inc/wd.js?s=kwcmfsyk8gjgzexem2p2cq"></script></body>
-
-</html>
-
+</body>
+</html> 
