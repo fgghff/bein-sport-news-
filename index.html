@@ -1,107 +1,153 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>JW PLAYER Pro</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.1/shaka-player.compiled.js"></script>
-   <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-
-   <style>
-      * { margin: 0; padding: 0; outline: none; }
-      #container { position: absolute; width: 100%!important; height: 100%!important; }
-      *:focus { outline: none; }
-   </style>
-
-   <script>
-      let isExpanded = false;
-
-      const expandSvg = `<svg fill="#ffffff" version="1.1" id="expand_icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 100 100" xml:space="preserve">
-         <g>
-            <path d="M22.661,20.5H36c1.104,0,2-0.896,2-2s-0.896-2-2-2H19c-1.104,0-2.5,1.276-2.5,2.381v17c0,1.104,0.896,2,2,2s2-0.896,2-2V24.876l16.042,15.791c0.391,0.391,1.027,0.586,1.539,0.586s1.086-0.195,1.477-0.586c0.781-0.781,0.812-2.237,0.031-3.019L22.661,20.5z"/>
-            <path d="M83,16.5H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h12.605L61.647,37.648c-0.781,0.781-0.781,2.142,0,2.923c0.39,0.391,0.902,0.633,1.414,0.633s0.774-0.171,1.164-0.562l16.274-16.5v11.738c0,1.104,0.896,2,2,2s2-0.896,2-2v-17C84.5,17.776,84.104,16.5,83,16.5z"/>
-            <path d="M36.542,60.962L20.5,76.754V65.881c0-1.104-0.896-2-2-2s-2,0.896-2,2v17c0,1.104,1.396,1.619,2.5,1.619h17c1.104,0,2-0.896,2-2s-0.896-2-2-2H22.529L39.62,63.6c0.781-0.781,0.656-1.951-0.125-2.732C38.715,60.086,37.322,60.181,36.542,60.962z"/>
-            <path d="M82.5,63.881c-1.104,0-2,0.896-2,2v11.606L64.226,60.962c-0.78-0.781-1.923-0.781-2.703,0c-0.781,0.781-0.719,1.856,0.062,2.638l17.152,16.9H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h17c1.104,0,1.5-0.515,1.5-1.619v-17C84.5,64.776,83.604,63.881,82.5,63.881z"/>
-         </g>
-      </svg>`;
-
-      jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
-
-      function setupJWPlayer(streamUrl) {
-         var player = jwplayer("container").setup({
-            width: "100%",
-            height: "100%",
-            controls: true,
-            stretching: "uniform",
-            autostart: true,
-            preload: "auto",
-            playbackRateControls: true,
-            mute: false,
-            volume: 50,
-            logo: {
-               file: "",
-               link: "https://t.me/Hamada_tv1",
-               hide: false,
-               position: "bottom-left",
-               margin: 20
-            },
-            skin: {
-               url: "https://cdn.jsdelivr.net/gh/kiprox/cf-gdplay@master/skins/netplex.css",
-               name: "Netflix"
-            },
-            aspectratio: "16:9",
-            playlist: [{
-               sources: [{
-                  file: streamUrl,
-                  type: "dash",
-                  drm: {
-                     clearkey: {
-                        keyId: "7faafe485db7395b9583222a3a6e789d", 
-                        key: "163906ba32dd3d611aad5789cbd00858"
-                     }
-                  },
-                  label: "HD"
-               }]
-            }]
-         });
-
-         player.on("setupError", function(event) {
-            console.error("خطأ في إعداد المشغل:", event.message);
-            alert("حدث خطأ أثناء تحميل المشغل!");
-         });
-
-         player.addButton(expandSvg, 'expand', function() {
-            toggleExpand();
-         }, 'expandButton');
-
-         function toggleExpand() {
-            const videoElement = document.querySelector("#container video");
-            if (!videoElement) return;
-            videoElement.style.objectFit = isExpanded ? 'fill' : 'contain';
-            isExpanded = !isExpanded;
-            updateExpandButtonTooltip();
-         }
-
-         function updateExpandButtonTooltip() {
-            const button = document.querySelector('.jw-expandButton');
-            if (button) {
-               button.setAttribute('aria-label', isExpanded ? 'تصغير الفيديو' : 'تمدد الفيديو');
-            }
-         }
-
-         player.on("ready", function() {
-            console.log("تم تحميل المشغل بنجاح!");
-         });
-      }
-
-      document.addEventListener("DOMContentLoaded", function() {
-         setupJWPlayer("https://todtv-live-ent-prod.akamaized.net/Content/Channel/svc-spo-hd-39-dt/DASH/playlist_tv.mpd?hdnts=st=1744220169~exp=1744227418~acl=*/Content/Channel/svc-spo-hd-39-dt/DASH/*~id=a720ebec-0d88-4916-ba6f-b38b89156128~data=aXA9NDEuMTExLjIzNC45OA~hmac=4e68dfb5873cd47e4d574e3c81ba36cc951bf72fcd795cfea3722ba1e99f43b0&_nocache=1a9e537b68003a601f446f2a3828f289");
-      });
-   </script>
+  <meta charset="UTF-8">
+  <title>Studiva - ستوديفا</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    h1 {
+      color: #2e8b57;
+    }
+    .day {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .hour-block {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      flex-wrap: wrap;
+    }
+    .hour-label {
+      width: 150px;
+    }
+    .multi-select {
+      flex: 1;
+      margin: 0 10px;
+    }
+    .summary {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-   <div id="container"></div>
+  <h1>Studiva - ستوديفا</h1>
+  <div id="days-container"></div>
+
+  <script>
+    const container = document.getElementById('days-container');
+    const startDate = new Date();
+    const endDate = new Date('2025-08-01');
+
+    const usefulWords = ['دراسة', 'صلاة', 'تعلم', 'رياضة', 'قراءة', 'مراجعة', 'قران', 'فهم', 'واجب', 'مذاكرة', 'دورة', 'بحث', 'مشروع', 'مقال', 'تركيز'];
+    const neutralWords = ['نوم', 'لم أفعل شيئًا مفيدًا'];
+    const allOptions = [...usefulWords, ...neutralWords];
+
+    function formatHour(hour) {
+      const period = hour < 12 ? 'صباحًا' : 'مساءً';
+      const formatted = hour % 12 === 0 ? 12 : hour % 12;
+      return `${formatted} ${period}`;
+    }
+
+    function createDayBlock(date) {
+      const dayKey = date.toISOString().split('T')[0];
+      const savedData = JSON.parse(localStorage.getItem(dayKey) || '{}');
+
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'day';
+
+      const dateHeader = document.createElement('h2');
+      dateHeader.textContent = date.toLocaleDateString('ar-EG');
+      dayDiv.appendChild(dateHeader);
+
+      const selects = [];
+
+      for (let i = 0; i < 24; i++) {
+        const hourDiv = document.createElement('div');
+        hourDiv.className = 'hour-block';
+
+        const label = document.createElement('span');
+        label.className = 'hour-label';
+        label.textContent = `الساعة ${formatHour(i)}`;
+
+        const select = document.createElement('select');
+        select.className = 'multi-select';
+        select.multiple = true;
+        allOptions.forEach(opt => {
+          const option = document.createElement('option');
+          option.value = opt;
+          option.textContent = opt;
+          select.appendChild(option);
+        });
+
+        if (savedData[i]) {
+          savedData[i].forEach(val => {
+            for (let option of select.options) {
+              if (option.value === val) option.selected = true;
+            }
+          });
+        }
+
+        const button = document.createElement('button');
+        button.textContent = 'حفظ';
+        button.onclick = () => {
+          const values = Array.from(select.selectedOptions).map(opt => opt.value);
+          savedData[i] = values.slice(0, 3); // حفظ حتى 3 قيم فقط
+          localStorage.setItem(dayKey, JSON.stringify(savedData));
+        };
+
+        selects.push(select);
+        hourDiv.appendChild(label);
+        hourDiv.appendChild(select);
+        hourDiv.appendChild(button);
+        dayDiv.appendChild(hourDiv);
+      }
+
+      const result = document.createElement('div');
+      result.className = 'summary';
+      dayDiv.appendChild(result);
+
+      const calcBtn = document.createElement('button');
+      calcBtn.textContent = 'احسب نسبة الإنجاز';
+      calcBtn.onclick = () => {
+        let usefulCount = 0;
+        selects.forEach(select => {
+          const values = Array.from(select.selectedOptions).map(opt => opt.value);
+          if (values.some(val => usefulWords.includes(val))) usefulCount++;
+        });
+        const percent = Math.round((usefulCount / 24) * 100);
+        result.textContent = `نسبة الإنجاز: ${percent}%`;
+      };
+      dayDiv.appendChild(calcBtn);
+
+      container.appendChild(dayDiv);
+    }
+
+    let current = new Date(startDate);
+    while (current <= endDate) {
+      createDayBlock(new Date(current));
+      current.setDate(current.getDate() + 1);
+    }
+  </script>
 </body>
 </html>
