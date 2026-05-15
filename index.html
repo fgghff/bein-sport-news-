@@ -1,95 +1,175 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>تقرير احترافي - Hash Functions</title>
-<style>
-body {font-family: 'Tahoma', sans-serif; line-height: 2.6; margin:0; background:#eef2f7;}
-.page {width: 90%; margin: 30px auto; padding:60px; background:white; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,0.12); page-break-after: always;}
-h1,h2,h3 {color:#0d47a1;}
-.cover {text-align:center; padding-top:140px;}
-p {text-align:justify; font-size:20px;}
-</style>
+    <meta charset="UTF-8">
+    <title>تقرير مادة البرمجة - عبدالله احمد مطلك</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f0f2f5; }
+        .container { width: 85%; margin: auto; background: #fff; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .header-section { text-align: center; border-bottom: 3px solid #1a5f7a; padding-bottom: 20px; margin-bottom: 40px; }
+        .header-section h1 { color: #1a5f7a; margin: 5px 0; }
+        .student-info { background: #eef7fa; border-right: 5px solid #1a5f7a; padding: 20px; margin-bottom: 40px; }
+        h2 { color: #1a5f7a; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 14px; }
+        .question { margin-bottom: 50px; }
+        .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #777; }
+        @media print { .container { box-shadow: none; width: 100%; padding: 0; } body { background: #fff; } }
+    </style>
 </head>
-<body><!-- Page 1 --><div class="page cover">
-<h1>جامعة تكريت</h1>
-<h2>كلية علوم الحاسوب والرياضيات</h2>
-<h3>قسم الأمن السيبراني</h3>
-<hr>
-<h2>هياكل متقطعة 2</h2>
-<h1>Hash Functions and Password Protection</h1>
-<p><strong>اسم الطالب:</strong> عبدالله احمد مطلك</p>
-<p><strong>المرحلة:</strong> الأولى</p>
-</div><!-- Page 2 --><div class="page">
-<h2>مقدمة موسعة</h2>
-<p>
-في عصر التكنولوجيا الحديثة، أصبحت البيانات الرقمية تمثل أحد أهم الأصول التي تعتمد عليها المؤسسات والأفراد على حد سواء. ومع تزايد الاعتماد على الأنظمة الإلكترونية، ظهرت الحاجة إلى وسائل فعالة لحماية هذه البيانات من الوصول غير المصرح به. يعد الأمن السيبراني من أهم المجالات التي تسعى إلى تحقيق هذه الحماية، ويعتمد بشكل كبير على المفاهيم الرياضية، وخاصة تلك التي يتم دراستها ضمن مادة الهياكل المتقطعة.
-</p>
-<p>
-تُعتبر دوال التجزئة من أهم الأدوات المستخدمة في هذا المجال، حيث تُستخدم لتحويل البيانات إلى تمثيل مشفر يصعب استرجاعه. هذا الأمر يساعد في حماية كلمات المرور والمعلومات الحساسة من السرقة أو التلاعب. كما أن هذه الدوال توفر وسيلة فعالة للتحقق من سلامة البيانات دون الحاجة إلى كشفها.
-</p>
-</div><!-- Page 3 --><div class="page">
-<h2>الأساس الرياضي لدوال التجزئة</h2>
-<p>
-دالة التجزئة هي دالة رياضية تأخذ مدخلات من مجموعة كبيرة جداً، مثل جميع النصوص الممكنة، وتحوّلها إلى مخرجات ذات طول ثابت. هذه العملية تُعد من التطبيقات المهمة في نظرية الدوال ضمن الهياكل المتقطعة. وبما أن المجال أكبر من المدى، فإن وجود تصادمات (أي مدخلين ينتجان نفس القيمة) أمر حتمي من الناحية النظرية.
-</p>
-<p>
-لكن التحدي الحقيقي يكمن في جعل هذه التصادمات نادرة جداً بحيث يصعب اكتشافها أو استغلالها عملياً. لذلك، يتم تصميم هذه الدوال باستخدام تقنيات رياضية معقدة تعتمد على نظرية الأعداد والخوارزميات.
-</p>
-</div><!-- Page 4 --><div class="page">
-<h2>خصائص دوال التجزئة</h2>
-<p>
-لكي تكون دالة التجزئة مناسبة للاستخدام في الأمن السيبراني، يجب أن تتوفر فيها مجموعة من الخصائص المهمة. أولاً، يجب أن تكون حتمية، أي أن نفس الإدخال يعطي نفس الناتج دائماً. ثانياً، يجب أن تكون سريعة في الحساب لتناسب الأنظمة العملية.
-</p>
-<p>
-كما يجب أن تكون مقاومة للتصادم، بحيث يكون من الصعب جداً العثور على مدخلين مختلفين ينتجان نفس القيمة. بالإضافة إلى ذلك، يجب أن تكون مقاومة للانعكاس، أي لا يمكن استرجاع المدخل الأصلي من الناتج. وأخيراً، يجب أن تمتلك خاصية الانتشار، حيث يؤدي تغيير بسيط في الإدخال إلى تغيير كبير في الناتج.
-</p>
-</div><!-- Page 5 --><div class="page">
-<h2>أنواع دوال التجزئة</h2>
-<p>
-هناك العديد من دوال التجزئة المستخدمة في الأنظمة المختلفة. من أشهرها MD5 و SHA-1، لكن هذه الدوال لم تعد آمنة بسبب اكتشاف ثغرات فيها. في المقابل، تُعتبر SHA-256 من أكثر الدوال استخداماً في الوقت الحالي بسبب قوتها الأمنية.
-</p>
-<p>
-كما توجد دوال متخصصة لحماية كلمات المرور مثل bcrypt و Argon2، والتي تأخذ بعين الاعتبار مقاومة الهجمات الحديثة مثل القوة الغاشمة. اختيار الدالة المناسبة يعتمد على طبيعة التطبيق ومستوى الأمان المطلوب.
-</p>
-</div><!-- Page 6 --><div class="page">
-<h2>حماية كلمات المرور</h2>
-<p>
-تُعد حماية كلمات المرور من أهم التطبيقات العملية لدوال التجزئة. بدلاً من تخزين كلمة المرور كنص صريح، يتم تحويلها إلى قيمة Hash وتخزين هذه القيمة فقط. عند تسجيل الدخول، يتم تحويل الكلمة المدخلة ومقارنتها بالقيمة المخزنة.
-</p>
-<p>
-هذا الأسلوب يضمن أنه حتى في حال اختراق قاعدة البيانات، لن يتمكن المهاجم من معرفة كلمات المرور الأصلية بسهولة. كما يتم استخدام تقنيات إضافية مثل Salt لزيادة الأمان.
-</p>
-</div><!-- Page 7 --><div class="page">
-<h2>الهجمات على دوال التجزئة</h2>
-<p>
-هناك عدة أنواع من الهجمات التي تستهدف دوال التجزئة. من أهمها هجوم القاموس، الذي يعتمد على استخدام قائمة من الكلمات الشائعة. كما يوجد هجوم القوة الغاشمة، الذي يقوم بتجربة جميع الاحتمالات الممكنة.
-</p>
-<p>
-بالإضافة إلى ذلك، هناك هجمات متقدمة مثل Rainbow Tables، والتي تستخدم جداول جاهزة لتسريع عملية الاختراق. لذلك، من الضروري استخدام تقنيات حماية متقدمة لمواجهة هذه الهجمات.
-</p>
-</div><!-- Page 8 --><div class="page">
-<h2>تقنيات الحماية الحديثة</h2>
-<p>
-لمواجهة التهديدات المتزايدة، تم تطوير تقنيات حديثة لتعزيز أمان دوال التجزئة. من أبرز هذه التقنيات استخدام Salt، وهو عبارة عن قيمة عشوائية تُضاف إلى كلمة المرور قبل التجزئة.
-</p>
-<p>
-كما يتم استخدام Pepper، وهي قيمة سرية تُضاف على مستوى النظام. بالإضافة إلى ذلك، يتم تطبيق تقنيات Key Stretching لزيادة زمن الحساب، مما يجعل الهجمات أكثر صعوبة وتكلفة.
-</p>
-</div><!-- Page 9 --><div class="page">
-<h2>تطبيقات دوال التجزئة</h2>
-<p>
-لا تقتصر استخدامات دوال التجزئة على حماية كلمات المرور فقط، بل تمتد إلى العديد من المجالات الأخرى. تُستخدم في التوقيع الرقمي لضمان هوية المرسل، وفي التحقق من سلامة الملفات لضمان عدم تعديلها.
-</p>
-<p>
-كما تُستخدم في تقنيات البلوك تشين، حيث تُعد أساساً في بناء سلاسل الكتل. بالإضافة إلى ذلك، تُستخدم في أنظمة المصادقة المختلفة.
-</p>
-</div><!-- Page 10 --><div class="page">
-<h2>الخاتمة</h2>
-<p>
-في الختام، تُعد دوال التجزئة من أهم الأدوات التي يعتمد عليها الأمن السيبراني في حماية البيانات. إن فهم هذه الدوال يتطلب معرفة عميقة بمفاهيم الهياكل المتقطعة، مما يبرز أهمية هذه المادة في بناء الأساس العلمي للطالب.
-</p>
-<p>
-لذلك، يجب على الطلاب التركيز على دراسة هذه المفاهيم وتطبيقها عملياً، لأنها تلعب دوراً محورياً في حماية الأنظمة الحديثة.
-</p>
-</div></body>
-</html>
+<body>
+
+<div class="container">
+    <div class="header-section">
+        <h1>جامعة تكريت</h1>
+        <h1>كلية علوم الحاسوب والرياضيات</h1>
+        <h2>قسم الأمن السيبراني - المرحلة الأولى</h2>
+    </div>
+
+    <div class="student-info">
+        <p><strong>المادة:</strong> برمجة (C++)</p>
+        <p><strong>اسم الطالب:</strong> عبدالله احمد مطلك</p>
+        <p><strong>الموضوع:</strong> حلول تمارين المصفوفات (Arrays)</p>
+    </div>
+
+    <div class="question">
+        <h2>السؤال الأول: إيجاد القيم العظمى في أعمدة المصفوفة (4x4)</h2>
+        <p>برنامج يقوم بقراءة مصفوفة ثنائية الأبعاد، ثم يستخرج أكبر قيمة في كل عمود ويخزنها في مصفوفة أحادية.</p>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int dataGrid[4][4], maxInCols[4];
+    
+    for (int r = 0; r < 4; r++)
+        for (int c = 0; c < 4; c++)
+            cin >> dataGrid[r][c];
+
+    for (int c = 0; c < 4; c++) {
+        maxInCols[c] = dataGrid[0][c];
+        for (int r = 1; r < 4; r++) {
+            if (dataGrid[r][c] > maxInCols[c])
+                maxInCols[c] = dataGrid[r][c];
+        }
+    }
+
+    cout << "Maximums: ";
+    for (int i = 0; i < 4; i++)
+        cout << maxInCols[i] << " ";
+
+    return 0;
+}
+        </pre>
+    </div>
+
+    <div class="question">
+        <h2>السؤال الثاني: حساب متوسط الأعداد الفردية في مصفوفة محولة</h2>
+        <p>تحويل مصفوفة ثنائية (3x3) إلى أحادية وحساب المتوسط الحسابي للأعداد الفردية فقط.</p>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int r = 3, c = 3, k = 0;
+    int matrix[3][3], flatArr[9];
+    int sumOdd = 0, countOdd = 0;
+
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> matrix[i][j];
+            flatArr[k++] = matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i < 9; i++) {
+        if (flatArr[i] % 2 != 0) {
+            sumOdd += flatArr[i];
+            countOdd++;
+        }
+    }
+
+    if (countOdd > 0)
+        cout << "Average of Odd: " << (double)sumOdd / countOdd;
+    else
+        cout << "No odd numbers found.";
+
+    return 0;
+}
+        </pre>
+    </div>
+
+    <div class="question">
+        <h2>السؤال الثالث: فحص الأعداد الأولية في القطر الثانوي</h2>
+        <p>برنامج مخصص لعد الأرقام الأولية الموجودة في عناصر القطر الثانوي للمصفوفة المربعة.</p>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int board[4][4], primeCount = 0;
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            cin >> board[i][j];
+
+    for (int i = 0; i < 4; i++) {
+        int val = board[i][3-i];
+        bool check = true;
+        if (val < 2) check = false;
+        for (int x = 2; x < val; x++)
+            if (val % x == 0) check = false;
+        if (check) primeCount++;
+    }
+    cout << "Count = " << primeCount;
+    return 0;
+}
+        </pre>
+    </div>
+
+    <div class="question">
+        <h2>السؤال الرابع: مجموع أعمدة المصفوفة</h2>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[4][4], colTotals[4] = {0};
+    for (int r = 0; r < 4; r++)
+        for (int c = 0; c < 4; c++)
+            cin >> arr[r][c];
+
+    for (int c = 0; c < 4; c++)
+        for (int r = 0; r < 4; r++)
+            colTotals[c] += arr[r][c];
+
+    for (int i = 0; i < 4; i++)
+        cout << colTotals[i] << " ";
+    return 0;
+}
+        </pre>
+    </div>
+
+    <div class="question">
+        <h2>السؤال الخامس: عكس مصفوفة أحادية</h2>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, vec[100];
+    cin >> n;
+    for (int i = 0; i < n; i++) cin >> vec[i];
+
+    for (int i = n - 1; i >= 0; i--)
+        cout << vec[i] << " ";
+    return 0;
+}
+        </pre>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 - تقرير برمجة C++ - جامعة تكريت
+    </div>
+</div>
+
+</body>
+  </html>
