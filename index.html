@@ -2,174 +2,240 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تقرير مادة البرمجة - عبدالله احمد مطلك</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واجب الهياكل المتقطعة - عبد الله أحمد مطلك</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f0f2f5; }
-        .container { width: 85%; margin: auto; background: #fff; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-        .header-section { text-align: center; border-bottom: 3px solid #1a5f7a; padding-bottom: 20px; margin-bottom: 40px; }
-        .header-section h1 { color: #1a5f7a; margin: 5px 0; }
-        .student-info { background: #eef7fa; border-right: 5px solid #1a5f7a; padding: 20px; margin-bottom: 40px; }
-        h2 { color: #1a5f7a; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 14px; }
-        .question { margin-bottom: 50px; }
-        .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #777; }
-        @media print { .container { box-shadow: none; width: 100%; padding: 0; } body { background: #fff; } }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #0056b3;
+            margin: 5px 0;
+            font-size: 24px;
+        }
+        .header h2 {
+            color: #555;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-right: 5px solid #0056b3;
+        }
+        .info-item {
+            font-size: 16px;
+        }
+        .info-item strong {
+            color: #0056b3;
+        }
+        .question-block {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .question-title {
+            color: #d9534f;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 0;
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .question-text {
+            font-style: italic;
+            color: #222;
+            background: #fdfefe;
+            padding: 10px;
+            border-left: 3px solid #ccc;
+            margin: 10px 0;
+            direction: ltr;
+            text-align: left;
+        }
+        .answer-title {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        .answer-content {
+            padding-right: 15px;
+            line-height: 1.6;
+        }
+        .math-steps {
+            direction: ltr;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            overflow-x: auto;
+        }
+        .matrix {
+            display: inline-block;
+            vertical-align: middle;
+            border-left: 2px solid #333;
+            border-right: 2px solid #333;
+            padding: 0 5px;
+            margin: 0 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-section">
-        <h1>جامعة تكريت</h1>
-        <h1>كلية علوم الحاسوب والرياضيات</h1>
-        <h2>قسم الأمن السيبراني - المرحلة الأولى</h2>
-    </div>
-
-    <div class="student-info">
-        <p><strong>المادة:</strong> برمجة (C++)</p>
-        <p><strong>اسم الطالب:</strong> عبدالله احمد مطلك</p>
-        <p><strong>الموضوع:</strong> حلول تمارين المصفوفات (Arrays)</p>
-    </div>
-
-    <div class="question">
-        <h2>السؤال الأول: إيجاد القيم العظمى في أعمدة المصفوفة (4x4)</h2>
-        <p>برنامج يقوم بقراءة مصفوفة ثنائية الأبعاد، ثم يستخرج أكبر قيمة في كل عمود ويخزنها في مصفوفة أحادية.</p>
-        <pre>
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int dataGrid[4][4], maxInCols[4];
     
-    for (int r = 0; r < 4; r++)
-        for (int c = 0; c < 4; c++)
-            cin >> dataGrid[r][c];
-
-    for (int c = 0; c < 4; c++) {
-        maxInCols[c] = dataGrid[0][c];
-        for (int r = 1; r < 4; r++) {
-            if (dataGrid[r][c] > maxInCols[c])
-                maxInCols[c] = dataGrid[r][c];
-        }
-    }
-
-    cout << "Maximums: ";
-    for (int i = 0; i < 4; i++)
-        cout << maxInCols[i] << " ";
-
-    return 0;
-}
-        </pre>
+    <div class="header">
+        <h1>جامعة تكريت</h1>
+        <h2>كلية علوم الحاسوب والرياضيات</h2>
+        <h2>قسم الأمن السيبراني - المرحلة الأولى</h2>
+        <h2 style="color: #2c3e50; font-weight: bold; margin-top: 15px;">مادة: هياكل متقطعة (Discrete Structures)</h2>
+        
+        <div class="info-grid">
+            <div class="info-item"><strong>اسم الطالب:</strong> عبد الله أحمد مطلك</div>
+            <div class="info-item"><strong>نوع العمل:</strong> حل واجب بيتي (Homework)</div>
+            <div class="info-item"><strong>الموضوع:</strong> Functions and Matrices</div>
+            <div class="info-item"><strong>التاريخ:</strong> ٢٠٢٦/٠٥/١٦</div>
+        </div>
     </div>
 
-    <div class="question">
-        <h2>السؤال الثاني: حساب متوسط الأعداد الفردية في مصفوفة محولة</h2>
-        <p>تحويل مصفوفة ثنائية (3x3) إلى أحادية وحساب المتوسط الحسابي للأعداد الفردية فقط.</p>
-        <pre>
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int r = 3, c = 3, k = 0;
-    int matrix[3][3], flatArr[9];
-    int sumOdd = 0, countOdd = 0;
-
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            cin >> matrix[i][j];
-            flatArr[k++] = matrix[i][j];
-        }
-    }
-
-    for (int i = 0; i < 9; i++) {
-        if (flatArr[i] % 2 != 0) {
-            sumOdd += flatArr[i];
-            countOdd++;
-        }
-    }
-
-    if (countOdd > 0)
-        cout << "Average of Odd: " << (double)sumOdd / countOdd;
-    else
-        cout << "No odd numbers found.";
-
-    return 0;
-}
-        </pre>
+    <div class="question-block">
+        <div class="question-title">Q1</div>
+        <div class="question-text">
+            Let A = {1, 2, 3, 4} and B = {a, b, c}. Consider the relation f = {(1, a), (2, b), (3, c), (4, b)}.<br>
+            Determine whether f is a function or not. Then find the range of f.
+        </div>
+        <div class="answer-title">الحل:</div>
+        <div class="answer-content">
+            <p><strong>1. هل العلاقة تمثل دالة (Function)؟</strong><br>
+            نعم، العلاقة <span>f</span> تمثل دالة. لأن كل عنصر في المجموعة المنطلق (Domain) <span>A = {1, 2, 3, 4}</span> يرتبط بعنصر واحد فقط وفقط في المجموعة المستقر (Codomain) <span>B</span>.</p>
+            
+            <p><strong>2. المدى (Range):</strong><br>
+            المدى هو مجموعة العناصر الفعالية في B التي استقبلت صوراً من A:</p>
+            <div class="math-steps">
+                Range(f) = {a, b, c}
+            </div>
+        </div>
     </div>
 
-    <div class="question">
-        <h2>السؤال الثالث: فحص الأعداد الأولية في القطر الثانوي</h2>
-        <p>برنامج مخصص لعد الأرقام الأولية الموجودة في عناصر القطر الثانوي للمصفوفة المربعة.</p>
-        <pre>
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int board[4][4], primeCount = 0;
-    for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++)
-            cin >> board[i][j];
-
-    for (int i = 0; i < 4; i++) {
-        int val = board[i][3-i];
-        bool check = true;
-        if (val < 2) check = false;
-        for (int x = 2; x < val; x++)
-            if (val % x == 0) check = false;
-        if (check) primeCount++;
-    }
-    cout << "Count = " << primeCount;
-    return 0;
-}
-        </pre>
+    <div class="question-block">
+        <div class="question-title">Q2</div>
+        <div class="question-text">
+            Determine whether the function f(x) = 2x + 5 from the set of integers to the set of integers is one-to-one. Explain your answer.
+        </div>
+        <div class="answer-title">الحل:</div>
+        <div class="answer-content">
+            <p>نعم، الدالة هي <strong>One-to-One (Injective)</strong> متباينة.</p>
+            <p><strong>التوضيح والإثبات الرياضي:</strong><br>
+            لإثبات أن الدالة متباينة، نفترض أن <span>f(x₁) = f(x₂)</span> ويجب أن نصل إلى أن <span>x₁ = x₂</span>:</p>
+            <div class="math-steps">
+                Let f(x₁) = f(x₂)<br>
+                2x₁ + 5 = 2x₂ + 5<br>
+                <br>
+                Subtract 5 from both sides:<br>
+                2x₁ = 2x₂<br>
+                <br>
+                Divide by 2:<br>
+                x₁ = x₂
+            </div>
+            <p>بما أن <span>x₁ = x₂</span> لكل العناصر في مجموعة الأعداد الصحيحة (𝐙)، فإن الدالة متباينة قطعاً.</p>
+        </div>
     </div>
 
-    <div class="question">
-        <h2>السؤال الرابع: مجموع أعمدة المصفوفة</h2>
-        <pre>
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int arr[4][4], colTotals[4] = {0};
-    for (int r = 0; r < 4; r++)
-        for (int c = 0; c < 4; c++)
-            cin >> arr[r][c];
-
-    for (int c = 0; c < 4; c++)
-        for (int r = 0; r < 4; r++)
-            colTotals[c] += arr[r][c];
-
-    for (int i = 0; i < 4; i++)
-        cout << colTotals[i] << " ";
-    return 0;
-}
-        </pre>
+    <div class="question-block">
+        <div class="question-title">Q3</div>
+        <div class="question-text">
+            Let A = {a, b, c, d} and B = {1, 2, 3, 4}. Suppose that f(a)=1, f(b)=2, f(c)=3, and f(d)=4.<br>
+            State whether the function is injective, surjective, and bijective.
+        </div>
+        <div class="answer-title">الحل:</div>
+        <div class="answer-content">
+            <ul>
+                <li><strong>Injective (One-to-One) / متباينة:</strong> 
+                    <span style="color: green; font-weight: bold;">نعم</span>، لأن العناصر المختلفة في A لها صور مختلفة تماماً في B.
+                </li>
+                <li><strong>Surjective (Onto) / شاملة:</strong> 
+                    <span style="color: green; font-weight: bold;">نعم</span>، لأن المدى (Range) يساوي تماماً المجال المقابل (Codomain B)، حيث تم تغطية جميع العناصر {1, 2, 3, 4}.
+                </li>
+                <li><strong>Bijective (One-to-One Correspondence) / تقابلية:</strong> 
+                    <span style="color: green; font-weight: bold;">نعم</span>، بما أن الدالة متباينة (Injective) وشاملة (Surjective) في آن واحد، إذن الدالة هي <strong>Bijective</strong>.
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div class="question">
-        <h2>السؤال الخامس: عكس مصفوفة أحادية</h2>
-        <pre>
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int n, vec[100];
-    cin >> n;
-    for (int i = 0; i < n; i++) cin >> vec[i];
-
-    for (int i = n - 1; i >= 0; i--)
-        cout << vec[i] << " ";
-    return 0;
-}
-        </pre>
+    <div class="question-block">
+        <div class="question-title">Q4</div>
+        <div class="question-text">
+            Perform the following matrix addition:<br>
+            A = [[2, 1], [3, 4]] &nbsp;&nbsp;&nbsp; B = [[5, -1], [0, 2]]<br>
+            Find A + B.
+        </div>
+        <div class="answer-title">الحل:</div>
+        <div class="answer-content">
+            <p>عند جمع مصفوفتين، نقوم بجمع العناصر المتناظرة:</p>
+            <div class="math-steps">
+                A + B = [<br>
+                &nbsp;&nbsp;[2 + 5, &nbsp;1 + (-1)],<br>
+                &nbsp;&nbsp;[3 + 0, &nbsp;4 + 2]<br>
+                ]<br><br>
+                A + B = [<br>
+                &nbsp;&nbsp;[7, 0],<br>
+                &nbsp;&nbsp;[3, 6]<br>
+                ]
+            </div>
+        </div>
     </div>
 
-    <div class="footer">
-        &copy; 2026 - تقرير برمجة C++ - جامعة تكريت
+    <div class="question-block">
+        <div class="question-title">Q5</div>
+        <div class="question-text">
+            Find the transpose of the following matrix:<br>
+            A = [[1, 2, 3], [4, 5, 6]]
+        </div>
+        <div class="answer-title">الحل:</div>
+        <div class="answer-content">
+            <p>منقول المصفوفة (Transpose) يتم فيه تحويل الصفوف إلى أعمدة والأعمدة إلى صفوف:</p>
+            <p>المصفوفة الأصلية ذات حجم 2×3، والمنقول سيكون بحجم 3×2:</p>
+            <div class="math-steps">
+                Aᵀ = [<br>
+                &nbsp;&nbsp;[1, 4],<br>
+                &nbsp;&nbsp;[2, 5],<br>
+                &nbsp;&nbsp;[3, 6]<br>
+                ]
+            </div>
+        </div>
     </div>
+
 </div>
 
 </body>
-  </html>
+</html>
