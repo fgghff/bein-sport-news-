@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التقرير الثاني: الدوائر التجميعية - عبدالله احمد مطلك</title>
+    <title>التقرير الأول: البوابات المنطقية - عبدالله احمد مطلك</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; line-height: 1.6; }
-        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #28a745; page-break-after: always; }
-        .header { text-align: center; border-bottom: 2px dashed #28a745; padding-bottom: 20px; margin-bottom: 30px; }
-        .header h1 { color: #28a745; margin: 5px 0; font-size: 26px; }
+        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #0056b3; page-break-after: always; }
+        .header { text-align: center; border-bottom: 2px dashed #0056b3; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: #0056b3; margin: 5px 0; font-size: 26px; }
         .header h2 { color: #444; margin: 5px 0; font-size: 18px; }
-        .student-info { background: #f8f9fa; border-right: 5px solid #0056b3; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .student-info { background: #f8f9fa; border-right: 5px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .student-info div { font-size: 16px; }
-        .student-info strong { color: #28a745; }
-        h3 { color: #28a745; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
+        .student-info strong { color: #0056b3; }
+        h3 { color: #0056b3; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
         p, li { font-size: 16px; color: #454545; text-align: justify; }
         .page-number { text-align: center; font-weight: bold; margin-top: 40px; color: #777; border-top: 1px solid #eee; padding-top: 10px; }
+        .code-block { direction: ltr; text-align: left; background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; margin: 20px 0; direction: ltr; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-        th { background-color: #28a745; color: white; }
+        th { background-color: #0056b3; color: white; }
         tr:nth-child(even) { background-color: #f2f2f2; }
     </style>
 </head>
@@ -29,7 +30,7 @@
             <h1>جامعة تكريت</h1>
             <h2>كلية علوم الحاسوب والرياضيات</h2>
             <h2>قسم الأمن السيبراني</h2>
-            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: الدوائر المنطقية التجميعية وتطبيقاتها</h2>
+            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: البوابات المنطقية والجبر البولياني</h2>
         </div>
         
         <div style="text-align: center; margin: 50px 0;">
@@ -40,81 +41,109 @@
             <div><strong>اسم الطالب:</strong> عبدالله احمد مطلك</div>
             <div><strong>المرحلة:</strong> الأولى</div>
             <div><strong>المادة:</strong> تصميم منطقي (Logic Design)</div>
-            <div><strong>نوع العمل:</strong> التقرير الثاني</div>
+            <div><strong>نوع العمل:</strong> التقرير الأول</div>
         </div>
         <div class="page-number">صفحة 1</div>
     </div>
 
     <div class="report-page">
-        <h3>1. مفهوم الدوائر المنطقية التجميعية (Combinational Logic Circuits)</h3>
-        <p>الدوائر التجميعية هي نوع من الدوائر الرقمية التي تعتمد قيم مخرجاتها في أي لحظة زمنية على القيم الحالية للمدخلات فقط. هذا يعني أنها دوائر "بلا ذاكرة" (Memoryless)، حيث لا تقوم بتخزين الحالات السابقة ولا تتأثر بها، على عكس الدوائر التتابعية (Sequential Circuits).</p>
-        <p>تتكون هذه الدوائر من شبكة من البوابات المنطقية المترابطة التي تقوم بمعالجة إشارات الدخل بشكل فوري لإنتاج إشارات الخرج المطلوبة، وتُستخدم هذه الدوائر لتنفيذ العمليات الحسابية والمنطقية الأساسية والتحكم في مسار البيانات داخل معالجات الحاسوب.</p>
+        <h3>1. مقدمة في التصميم المنطقي والأنظمة الرقمية</h3>
+        <p>يعتمد التصميم المنطقي بشكل أساسي على الدوائر الرقمية التي تتعامل مع نظام العد الثنائي (Binary System)، حيث يتم تمثيل البيانات بحالتين فقط وهما (0 و 1). تعبر هذه القيم عن مستويات الجهد الكهربائي داخل الحاسوب؛ حيث يمثل الصفر غياب الجهد (Low Voltage) والواحد وجود الجهد (High Voltage).</p>
+        <p>تعتبر البوابات المنطقية (Logic Gates) حجر الأساس لبناء أي نظام رقمي أو معالج دقيق، ومن خلال دمج هذه البوابات معاً، يمكننا تصميم دوائر معقدة قادرة على معالجة البيانات، وتأمين الأنظمة، وتشفير المعلومات وهي المبادئ الأساسية التي يقوم عليها تخصص الأمن السيبراني لحماية البيانات على مستوى العتاد (Hardware Security).</p>
         <div class="page-number">صفحة 2</div>
     </div>
 
     <div class="report-page">
-        <h3>2. دوائر الجمع الحسابية (Adders)</h3>
-        <p>تعد دوائر الجمع من أهم الدوائر التجميعية، حيث تُستخدم لبناء وحدة الحساب والمنطق (ALU) داخل المعالج، وتنقسم إلى نوعين:</p>
+        <h3>2. البوابات المنطقية الأساسية (Basic Logic Gates)</h3>
+        <p>تنقسم البوابات المنطقية إلى بوابات أساسية لا يمكن الاستغناء عنها وهي:</p>
         <ul>
-            <li><strong>الجامع النصفي (Half Adder):</strong> يقوم بجمع خانتين ثنائيتين (A و B) وينتج عنهما المجموع (Sum) وخانة الحمل (Carry). ولكنه لا يستطيع التعامل مع حمل قادم من خانة سابقة.</li>
-            <li><strong>الجامع الكامل (Full Adder):</strong> يقوم بجمع ثلاث خانات ثنائية (الخانتين الأساسيتين بالإضافة إلى الحمل القادم من المرحلة السابقة Cin)، وينتج المجموع (Sum) والحمل الجديد (Cout).</li>
+            <li><strong>بوابة الضرب المنطقي (AND Gate):</strong> لا تعطي مخرجاً يساوي (1) إلا إذا كانت جميع المدخلات تساوي (1).</li>
+            <li><strong>بوابة الجمع المنطقي (OR Gate):</strong> تعطي مخرجاً يساوي (1) إذا كان أحد المدخلات على الأقل يساوي (1).</li>
+            <li><strong>بوابة النفي (NOT Gate):</strong> وتسمى العاكس (Inverter)، حيث تقوم بعكس المدخل (إذا كان المدخل 1 يصبح المخرج 0 والعكس صحيح).</li>
         </ul>
 
-        <h4 style="direction: ltr; text-align: left;">Truth Table for Full Adder:</h4>
+        <h4 style="direction: ltr; text-align: left;">Truth Table for AND and OR Gates (2-Inputs):</h4>
         <table>
             <thead>
                 <tr>
-                    <th>A</th>
-                    <th>B</th>
-                    <th>Cin</th>
-                    <th>Sum (S)</th>
-                    <th>Cout</th>
+                    <th>Input A</th>
+                    <th>Input B</th>
+                    <th>AND (A · B)</th>
+                    <th>OR (A + B)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-                <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-                <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-                <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
             </tbody>
         </table>
         <div class="page-number">صفحة 3</div>
     </div>
 
     <div class="report-page">
-        <h3>3. الموزعات ومحددات البيانات (Multiplexers & Demultiplexers)</h3>
-        <p>تُستخدم هذه الدوائر للتحكم في تدفق وتوجيه البيانات عبر قنوات الاتصال وأنظمة الحاسوب:</p>
+        <h3>3. البوابات المنطقية المشتقة والشاملة (Universal Gates)</h3>
+        <p>تسمى بوابات مثل <strong>NAND</strong> و <strong>NOR</strong> بالبوابات الشاملة (Universal Gates) لأنه يمكن استخدام أي منها بمفردها لبناء أي دالة أو بوابة منطقية أخرى، مما يساهم في تقليل تكلفة تصنيع الرقاقات الإلكترونية.</p>
         <ul>
-            <li><strong>الموزع (Multiplexer - MUX):</strong> هو دائرة تجميعية تمتلك عدة مدخلات ومخرج واحد فقط، ويتم تحديد أي من هذه المدخلات يمر إلى المخرج بواسطة خطوط التحكم والاختيار (Select Lines). يُشبه مفتاح الاختيار الدوار.</li>
-            <li><strong>موزع البيانات (Demultiplexer - DEMUX):</strong> يقوم بعمل عكسي تماماً للموزع، حيث يمتلك مدخلاً واحداً وعدة مخرجات، ويقوم بتوجيه إشارة الدخل إلى أحد المخرجات بناءً على خطوط الاختيار.</li>
+            <li><strong>بوابة NAND:</strong> هي عبارة عن بوابة AND متبوعة ببوابة NOT. معادلتها: Y = (A · B)'</li>
+            <li><strong>بوابة NOR:</strong> هي عبارة عن بوابة OR متبوعة ببوابة NOT. معادلتها: Y = (A + B)'</li>
+            <li><strong>بوابة XOR (Exclusive OR):</strong> تعطي مخرجاً (1) فقط عندما تكون المدخلات مختلفة.</li>
         </ul>
-        <p>تكمن أهمية هذه الدوائر في تخصص الأمن السيبراني في تصميم جدران الحماية على مستوى العتاد والتحكم الآمن في مسارات تداول البيانات الحساسة ومنع تسريبها.</p>
+        <h4 style="direction: ltr; text-align: left;">Truth Table for NAND, NOR, and XOR:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>NAND (A·B)'</th>
+                    <th>NOR (A+B)'</th>
+                    <th>XOR (A⊕B)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+        </table>
         <div class="page-number">صفحة 4</div>
     </div>
 
     <div class="report-page">
-        <h3>4. المشفرات ومحللات الشفرة (Encoders & Decoders)</h3>
-        <p>تُستخدم هذه الدوائر لتحويل صيغ البيانات وتسهيل فهمها من قبل العتاد أو المستخدم:</p>
+        <h3>4. الجبر البولياني وقوانين التبسيط (Boolean Algebra)</h3>
+        <p>الجبر البولياني هو النظام الرياضي المستخدم لتحليل وتبسيط الدوائر المنطقية. الهدف من التبسيط هو تقليل عدد البوابات المستخدمة في الدائرة مما يؤدي إلى زيادة سرعة المعالجة وتقليل استهلاك الطاقة وتقليص المساحة على الرقاقة الإلكترونية.</p>
+        <p><strong>أهم قوانين الجبر البولياني:</strong></p>
         <ul>
-            <li><strong>محلل الشفرة (Decoder):</strong> دائرة تستقبل مدخلات مشفرة بصيغة ثنائية (Binary) وتعمل على تفعيل مخرج واحد فقط من مخرجاتها المتعددة. من أشهر تطبيقاتها هو دائرة (BCD to 7-Segment Decoder) المستخدمة لعرض الأرقام على الشاشات الرقمية كالساعات والآلات الحاسبة.</li>
-            <li><strong>المشفر (Encoder):</strong> يقوم بالعملية العكسية لمحلل الشفرة، حيث يستقبل إشارة من أحد خطوط الدخل المتعددة ويقوم بتحويلها إلى شفرة ثنائية مضغوطة ومحددة.</li>
+            <li>قوانين الهوية (Identity Laws): A + 0 = A , A · 1 = A</li>
+            <li>قوانين المتمم (Complement Laws): A + A' = 1 , A · A' = 0</li>
+            <li>قوانين دي مورغان (De Morgan's Laws):
+                <br>1. (A · B)' = A' + B'
+                <br>2. (A + B)' = A' · B'
+            </li>
         </ul>
+        <p><strong>مثال على التبسيط:</strong> تبسيط الدالة F = A·B + A·B'</p>
+        <div class="code-block">
+            F = A · (B + B')   [بأخذ عامل مشترك]
+            F = A · (1)        [B + B' = 1 حسب قانون المتمم]
+            F = A              [النتيجة النهائية]
+        </div>
         <div class="page-number">صفحة 5</div>
     </div>
 
     <div class="report-page">
         <h3>5. الخاتمة والمصادر</h3>
-        <p>في ختام هذا التقرير، نرى أن الدوائر التجميعية مثل الجوامع والموزعات والمشفرات تشكل البنية الوظيفية الأساسية لمعالجة البيانات وتوجيهها داخل الحواسيب. إن الفهم العميق لكيفية عمل هذه الدوائر يدعم المتخصصين في مجالات علوم الحاسوب والأمن السيبراني لتطوير بنى تحتية رقمية أكثر كفاءة وأماناً على مستوى المكونات المادية.</p>
+        <p>نستنتج من هذا التقرير أن فهم البوابات المنطقية والجبر البولياني يمثل الخطوة الأولى والأساسية في فهم بنية الحاسوب الرقمي. إن القدرة على تبسيط الدوال المنطقية تتيح لمهندسي الأمن السيبراني ومصممي الأنظمة بناء عتاد صلب يتميز بالكفاءة العالية والسرعة والأمان، حيث تبدأ حماية البيانات من الدائرة المنطقية نفسها.</p>
         
         <h4 style="margin-top: 40px;">المصادر والمراجع (References):</h4>
         <ol style="direction: ltr; text-align: left;">
-            <li>Digital Fundamentals (11th Edition) - Thomas L. Floyd.</li>
-            <li>Contemporary Logic Design - Randy H. Katz.</li>
-            <li>Department of Cyber Security Coursework - University of Tikrit.</li>
+            <li>Digital Design (6th Edition) - M. Morris Mano and Michael D. Ciletti.</li>
+            <li>Principles of Digital Electronics - Fundamentals and Applications.</li>
+            <li>Lecture Notes on Logic Design - University of Tikrit, College of Computer Science and Mathematics.</li>
         </ol>
         <div class="page-number">صفحة 6</div>
     </div>
 
 </body>
-</html>
+                        </html>
