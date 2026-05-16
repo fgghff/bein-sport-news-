@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التقرير الأول: البوابات المنطقية - عبدالله احمد مطلك</title>
+    <title>التقرير الثالث: الدوائر التتابعية - عبدالله احمد مطلك</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; line-height: 1.6; }
-        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #0056b3; page-break-after: always; }
-        .header { text-align: center; border-bottom: 2px dashed #0056b3; padding-bottom: 20px; margin-bottom: 30px; }
-        .header h1 { color: #0056b3; margin: 5px 0; font-size: 26px; }
+        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #9b59b6; page-break-after: always; }
+        .header { text-align: center; border-bottom: 2px dashed #9b59b6; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: #9b59b6; margin: 5px 0; font-size: 26px; }
         .header h2 { color: #444; margin: 5px 0; font-size: 18px; }
-        .student-info { background: #f8f9fa; border-right: 5px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .student-info { background: #f8f9fa; border-right: 5px solid #0056b3; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .student-info div { font-size: 16px; }
-        .student-info strong { color: #0056b3; }
-        h3 { color: #0056b3; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
+        .student-info strong { color: #9b59b6; }
+        h3 { color: #9b59b6; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
         p, li { font-size: 16px; color: #454545; text-align: justify; }
         .page-number { text-align: center; font-weight: bold; margin-top: 40px; color: #777; border-top: 1px solid #eee; padding-top: 10px; }
-        .code-block { direction: ltr; text-align: left; background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; margin: 20px 0; direction: ltr; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-        th { background-color: #0056b3; color: white; }
+        th { background-color: #9b59b6; color: white; }
         tr:nth-child(even) { background-color: #f2f2f2; }
     </style>
 </head>
@@ -30,7 +29,7 @@
             <h1>جامعة تكريت</h1>
             <h2>كلية علوم الحاسوب والرياضيات</h2>
             <h2>قسم الأمن السيبراني</h2>
-            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: البوابات المنطقية والجبر البولياني</h2>
+            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: الدوائر المنطقية التتابعية وعناصر الذاكرة</h2>
         </div>
         
         <div style="text-align: center; margin: 50px 0;">
@@ -41,106 +40,74 @@
             <div><strong>اسم الطالب:</strong> عبدالله احمد مطلك</div>
             <div><strong>المرحلة:</strong> الأولى</div>
             <div><strong>المادة:</strong> تصميم منطقي (Logic Design)</div>
-            <div><strong>نوع العمل:</strong> التقرير الأول</div>
+            <div><strong>نوع العمل:</strong> التقرير الثالث</div>
         </div>
         <div class="page-number">صفحة 1</div>
     </div>
 
     <div class="report-page">
-        <h3>1. مقدمة في التصميم المنطقي والأنظمة الرقمية</h3>
-        <p>يعتمد التصميم المنطقي بشكل أساسي على الدوائر الرقمية التي تتعامل مع نظام العد الثنائي (Binary System)، حيث يتم تمثيل البيانات بحالتين فقط وهما (0 و 1). تعبر هذه القيم عن مستويات الجهد الكهربائي داخل الحاسوب؛ حيث يمثل الصفر غياب الجهد (Low Voltage) والواحد وجود الجهد (High Voltage).</p>
-        <p>تعتبر البوابات المنطقية (Logic Gates) حجر الأساس لبناء أي نظام رقمي أو معالج دقيق، ومن خلال دمج هذه البوابات معاً، يمكننا تصميم دوائر معقدة قادرة على معالجة البيانات، وتأمين الأنظمة، وتشفير المعلومات وهي المبادئ الأساسية التي يقوم عليها تخصص الأمن السيبراني لحماية البيانات على مستوى العتاد (Hardware Security).</p>
+        <h3>1. مقدمة في الدوائر المنطقية التتابعية (Sequential Logic Circuits)</h3>
+        <p>على عكس الدوائر التجميعية، فإن الدوائر التتابعية هي دوائر رقمية تمتلك القدرة على "التذكر". حيث تعتمد مخرجاتها في أي لحظة على المدخلات الحالية بالإضافة إلى **الحالة السابقة المحفوظة في الذاكرة**. هذا يعني أنها تحتوي على مسار تغذية راجعة (Feedback Loop) وعناصر تخزين تؤثر على آلية اتخاذ القرار الرقمي.</p>
+        <p>تعتبر الدوائر التتابعية المكون الأساسي لبناء الذاكرة العشوائية (RAM)، العدادات، ووحدات المعالجة المركزية، حيث يرتكز عليها الأمن السيبراني بشكل حاسم عند دراسة "أمن العتاد" وفهم الحالات الانتقالية للأنظمة الرقمية لمنع الثغرات الناجمة عن تداخل الحالات (Race Conditions).</p>
         <div class="page-number">صفحة 2</div>
     </div>
 
     <div class="report-page">
-        <h3>2. البوابات المنطقية الأساسية (Basic Logic Gates)</h3>
-        <p>تنقسم البوابات المنطقية إلى بوابات أساسية لا يمكن الاستغناء عنها وهي:</p>
+        <h3>2. عناصر التخزين الأساسية: القلابات (Flip-Flops)</h3>
+        <p>القلاب المنطقي هو وحدة البناء الأساسية للذاكرة الرقمية، وهو دائرة قادرة على تخزين خانة ثنائية واحدة (Bit واحد: إما 0 أو 1). توجد أنواع متعددة من القلابات، وتعمل غالباً بالتزامن مع إشارة الساعة (Clock Signal):</p>
         <ul>
-            <li><strong>بوابة الضرب المنطقي (AND Gate):</strong> لا تعطي مخرجاً يساوي (1) إلا إذا كانت جميع المدخلات تساوي (1).</li>
-            <li><strong>بوابة الجمع المنطقي (OR Gate):</strong> تعطي مخرجاً يساوي (1) إذا كان أحد المدخلات على الأقل يساوي (1).</li>
-            <li><strong>بوابة النفي (NOT Gate):</strong> وتسمى العاكس (Inverter)، حيث تقوم بعكس المدخل (إذا كان المدخل 1 يصبح المخرج 0 والعكس صحيح).</li>
+            <li><strong>قلاب SR (SR Flip-Flop):</strong> يحتوي على مدخلين؛ S للضبط (Set) و R لإعادة الضبط (Reset). يعيبه وجود حالة غير معرفة عندما يكون كلا المدخلين 1.</li>
+            <li><strong>قلاب JK (JK Flip-Flop):</strong> يعالج مشكلة الحالة غير المعرفة في SR، حيث يؤدي إدخال 1 على كلا الطرفين إلى عكس الحالة السابقة (Toggle).</li>
+            <li><strong>قلاب D (D Flip-Flop):</strong> يسمى قلاب البيانات (Data)، وهو ينقل المدخل مباشرة إلى المخرج عند نبضة الساعة، ويُستخدم كثيراً في بناء مسجلات الحفظ.</li>
         </ul>
 
-        <h4 style="direction: ltr; text-align: left;">Truth Table for AND and OR Gates (2-Inputs):</h4>
+        <h4 style="direction: ltr; text-align: left;">Truth Table for JK Flip-Flop:</h4>
         <table>
             <thead>
                 <tr>
-                    <th>Input A</th>
-                    <th>Input B</th>
-                    <th>AND (A · B)</th>
-                    <th>OR (A + B)</th>
+                    <th>J</th>
+                    <th>K</th>
+                    <th>Next State Q(t+1)</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-                <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-                <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                <tr><td>0</td><td>0</td><td>Q(t)</td><td>No Change (حفظ)</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td><td>Reset (تصفير)</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td><td>Set (تفعيل)</td></tr>
+                <tr><td>1</td><td>1</td><td>Q'(t)</td><td>Toggle (عكس)</td></tr>
             </tbody>
         </table>
         <div class="page-number">صفحة 3</div>
     </div>
 
     <div class="report-page">
-        <h3>3. البوابات المنطقية المشتقة والشاملة (Universal Gates)</h3>
-        <p>تسمى بوابات مثل <strong>NAND</strong> و <strong>NOR</strong> بالبوابات الشاملة (Universal Gates) لأنه يمكن استخدام أي منها بمفردها لبناء أي دالة أو بوابة منطقية أخرى، مما يساهم في تقليل تكلفة تصنيع الرقاقات الإلكترونية.</p>
-        <ul>
-            <li><strong>بوابة NAND:</strong> هي عبارة عن بوابة AND متبوعة ببوابة NOT. معادلتها: Y = (A · B)'</li>
-            <li><strong>بوابة NOR:</strong> هي عبارة عن بوابة OR متبوعة ببوابة NOT. معادلتها: Y = (A + B)'</li>
-            <li><strong>بوابة XOR (Exclusive OR):</strong> تعطي مخرجاً (1) فقط عندما تكون المدخلات مختلفة.</li>
-        </ul>
-        <h4 style="direction: ltr; text-align: left;">Truth Table for NAND, NOR, and XOR:</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>A</th>
-                    <th>B</th>
-                    <th>NAND (A·B)'</th>
-                    <th>NOR (A+B)'</th>
-                    <th>XOR (A⊕B)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-                <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-                <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-                <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-            </tbody>
-        </table>
+        <h3>3. مسجلات الإزاحة (Shift Registers)</h3>
+        <p>عند دمج مجموعة من القلابات (غالباً من النوع D) معاً على التوالي، نحصل على ما يسمى بـ **المسجل (Register)**. يُستخدم المسجل لتخزين عدة خانات ثنائية (مثل كلمة مكونة من 8 بت أو 16 بت).</p>
+        <p>أما **مسجلات الإزاحة**، فهي تسمح بنقل البيانات المخزنة من قلاب إلى القلاب المجاور له مع كل نبضة ساعة. تكمن أهميتها البالغة في تحويل البيانات من الصيغة التوالي (Serial) إلى الصيغة المتوازية (Parallel) والعكس، وهو الأمر الضروري جداً في شبكات الاتصال ونقل البيانات المشفرة آمنياً بين الحواسيب وملحقاتها.</p>
         <div class="page-number">صفحة 4</div>
     </div>
 
     <div class="report-page">
-        <h3>4. الجبر البولياني وقوانين التبسيط (Boolean Algebra)</h3>
-        <p>الجبر البولياني هو النظام الرياضي المستخدم لتحليل وتبسيط الدوائر المنطقية. الهدف من التبسيط هو تقليل عدد البوابات المستخدمة في الدائرة مما يؤدي إلى زيادة سرعة المعالجة وتقليل استهلاك الطاقة وتقليص المساحة على الرقاقة الإلكترونية.</p>
-        <p><strong>أهم قوانين الجبر البولياني:</strong></p>
+        <h3>4. العدادات الرقمية (Digital Counters)</h3>
+        <p>العدادات هي تطبيقات مباشرة على الدوائر التتابعية، حيث تتنقل عبر تتابع محدد من الحالات الرقمية مع كل نبضة ساعة تصل إليها. تنقسم العدادات إلى نوعين رئيسيين:</p>
         <ul>
-            <li>قوانين الهوية (Identity Laws): A + 0 = A , A · 1 = A</li>
-            <li>قوانين المتمم (Complement Laws): A + A' = 1 , A · A' = 0</li>
-            <li>قوانين دي مورغان (De Morgan's Laws):
-                <br>1. (A · B)' = A' + B'
-                <br>2. (A + B)' = A' · B'
-            </li>
+            <li><strong>العدادات غير المتزامنة (Asynchronous/Ripple Counters):</strong> في هذا النوع، لا تصل إشارة الساعة إلى جميع القلابات في نفس الوقت، بل يقوم مخرج القلاب الأول بتشغيل القلاب الذي يليه، مما يسبب تأخراً بسيطاً في الاستجابة.</li>
+            <li><strong>العدادات المتزامنة (Synchronous Counters):</strong> تتصل إشارة الساعة بجميع القلابات معاً في نفس اللحظة، مما يجعلها أسرع وأكثر دقة ومثالية للأنظمة عالية الأداء والأمان.</li>
         </ul>
-        <p><strong>مثال على التبسيط:</strong> تبسيط الدالة F = A·B + A·B'</p>
-        <div class="code-block">
-            F = A · (B + B')   [بأخذ عامل مشترك]
-            F = A · (1)        [B + B' = 1 حسب قانون المتمم]
-            F = A              [النتيجة النهائية]
-        </div>
+        <p>تستخدم العدادات في توليد التوقيتات، وحساب الفترات الزمنية، وتوليد مفاتيح التشفير الدورية في أنظمة الأمن السيبراني.</p>
         <div class="page-number">صفحة 5</div>
     </div>
 
     <div class="report-page">
         <h3>5. الخاتمة والمصادر</h3>
-        <p>نستنتج من هذا التقرير أن فهم البوابات المنطقية والجبر البولياني يمثل الخطوة الأولى والأساسية في فهم بنية الحاسوب الرقمي. إن القدرة على تبسيط الدوال المنطقية تتيح لمهندسي الأمن السيبراني ومصممي الأنظمة بناء عتاد صلب يتميز بالكفاءة العالية والسرعة والأمان، حيث تبدأ حماية البيانات من الدائرة المنطقية نفسها.</p>
+        <p>في نهاية هذا التقرير، نرى أن الدوائر التتابعية تمثل القفزة النوعية في التصميم المنطقي، حيث نقلت الأنظمة الرقمية من مرحلة المعالجة الفورية البسيطة إلى مرحلة الحوسبة الذكية القائمة على تخزين البيانات وتتبع الحالات وتوقيت العمليات. إن إدراك آلية عمل الذاكرة والمسجلات يعتبر مهارة حتمية لطلبة الأمن السيبراني لتحليل سلوك العتاد وحماية البيانات المخزنة مؤقتاً.</p>
         
         <h4 style="margin-top: 40px;">المصادر والمراجع (References):</h4>
         <ol style="direction: ltr; text-align: left;">
-            <li>Digital Design (6th Edition) - M. Morris Mano and Michael D. Ciletti.</li>
-            <li>Principles of Digital Electronics - Fundamentals and Applications.</li>
-            <li>Lecture Notes on Logic Design - University of Tikrit, College of Computer Science and Mathematics.</li>
+            <li>Digital Systems: Principles and Applications - Ronald J. Tocci.</li>
+            <li>Introduction to Logic Design - Alan B. Marcovitz.</li>
+            <li>Academic Syllabus of Logic Design - University of Tikrit, 2026.</li>
         </ol>
         <div class="page-number">صفحة 6</div>
     </div>
