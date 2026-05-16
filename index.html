@@ -3,239 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واجب الهياكل المتقطعة - عبد الله أحمد مطلك</title>
+    <title>التقرير الثاني: الدوائر التجميعية - عبدالله احمد مطلك</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #0056b3;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            color: #0056b3;
-            margin: 5px 0;
-            font-size: 24px;
-        }
-        .header h2 {
-            color: #555;
-            margin: 5px 0;
-            font-size: 18px;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            border-right: 5px solid #0056b3;
-        }
-        .info-item {
-            font-size: 16px;
-        }
-        .info-item strong {
-            color: #0056b3;
-        }
-        .question-block {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .question-title {
-            color: #d9534f;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 0;
-            border-bottom: 1px dashed #e0e0e0;
-            padding-bottom: 10px;
-        }
-        .question-text {
-            font-style: italic;
-            color: #222;
-            background: #fdfefe;
-            padding: 10px;
-            border-left: 3px solid #ccc;
-            margin: 10px 0;
-            direction: ltr;
-            text-align: left;
-        }
-        .answer-title {
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 15px;
-            font-size: 16px;
-        }
-        .answer-content {
-            padding-right: 15px;
-            line-height: 1.6;
-        }
-        .math-steps {
-            direction: ltr;
-            text-align: left;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-            overflow-x: auto;
-        }
-        .matrix {
-            display: inline-block;
-            vertical-align: middle;
-            border-left: 2px solid #333;
-            border-right: 2px solid #333;
-            padding: 0 5px;
-            margin: 0 5px;
-            text-align: center;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; line-height: 1.6; }
+        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #28a745; page-break-after: always; }
+        .header { text-align: center; border-bottom: 2px dashed #28a745; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: #28a745; margin: 5px 0; font-size: 26px; }
+        .header h2 { color: #444; margin: 5px 0; font-size: 18px; }
+        .student-info { background: #f8f9fa; border-right: 5px solid #0056b3; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .student-info div { font-size: 16px; }
+        .student-info strong { color: #28a745; }
+        h3 { color: #28a745; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
+        p, li { font-size: 16px; color: #454545; text-align: justify; }
+        .page-number { text-align: center; font-weight: bold; margin-top: 40px; color: #777; border-top: 1px solid #eee; padding-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; direction: ltr; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #28a745; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <div class="header">
-        <h1>جامعة تكريت</h1>
-        <h2>كلية علوم الحاسوب والرياضيات</h2>
-        <h2>قسم الأمن السيبراني - المرحلة الأولى</h2>
-        <h2 style="color: #2c3e50; font-weight: bold; margin-top: 15px;">مادة: هياكل متقطعة (Discrete Structures)</h2>
+    <div class="report-page">
+        <div class="header">
+            <h1>جامعة تكريت</h1>
+            <h2>كلية علوم الحاسوب والرياضيات</h2>
+            <h2>قسم الأمن السيبراني</h2>
+            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: الدوائر المنطقية التجميعية وتطبيقاتها</h2>
+        </div>
         
-        <div class="info-grid">
-            <div class="info-item"><strong>اسم الطالب:</strong> عبد الله أحمد مطلك</div>
-            <div class="info-item"><strong>نوع العمل:</strong> حل واجب بيتي (Homework)</div>
-            <div class="info-item"><strong>الموضوع:</strong> Functions and Matrices</div>
-            <div class="info-item"><strong>التاريخ:</strong> ٢٠٢٦/٠٥/١٦</div>
+        <div style="text-align: center; margin: 50px 0;">
+            <p style="font-size: 18px; font-weight: bold;">مقدم إلى كلية علوم الحاسوب والرياضيات كجزء من متطلبات مادة التصميم المنطقي</p>
         </div>
+
+        <div class="student-info">
+            <div><strong>اسم الطالب:</strong> عبدالله احمد مطلك</div>
+            <div><strong>المرحلة:</strong> الأولى</div>
+            <div><strong>المادة:</strong> تصميم منطقي (Logic Design)</div>
+            <div><strong>نوع العمل:</strong> التقرير الثاني</div>
+        </div>
+        <div class="page-number">صفحة 1</div>
     </div>
 
-    <div class="question-block">
-        <div class="question-title">Q1</div>
-        <div class="question-text">
-            Let A = {1, 2, 3, 4} and B = {a, b, c}. Consider the relation f = {(1, a), (2, b), (3, c), (4, b)}.<br>
-            Determine whether f is a function or not. Then find the range of f.
-        </div>
-        <div class="answer-title">الحل:</div>
-        <div class="answer-content">
-            <p><strong>1. هل العلاقة تمثل دالة (Function)؟</strong><br>
-            نعم، العلاقة <span>f</span> تمثل دالة. لأن كل عنصر في المجموعة المنطلق (Domain) <span>A = {1, 2, 3, 4}</span> يرتبط بعنصر واحد فقط وفقط في المجموعة المستقر (Codomain) <span>B</span>.</p>
-            
-            <p><strong>2. المدى (Range):</strong><br>
-            المدى هو مجموعة العناصر الفعالية في B التي استقبلت صوراً من A:</p>
-            <div class="math-steps">
-                Range(f) = {a, b, c}
-            </div>
-        </div>
+    <div class="report-page">
+        <h3>1. مفهوم الدوائر المنطقية التجميعية (Combinational Logic Circuits)</h3>
+        <p>الدوائر التجميعية هي نوع من الدوائر الرقمية التي تعتمد قيم مخرجاتها في أي لحظة زمنية على القيم الحالية للمدخلات فقط. هذا يعني أنها دوائر "بلا ذاكرة" (Memoryless)، حيث لا تقوم بتخزين الحالات السابقة ولا تتأثر بها، على عكس الدوائر التتابعية (Sequential Circuits).</p>
+        <p>تتكون هذه الدوائر من شبكة من البوابات المنطقية المترابطة التي تقوم بمعالجة إشارات الدخل بشكل فوري لإنتاج إشارات الخرج المطلوبة، وتُستخدم هذه الدوائر لتنفيذ العمليات الحسابية والمنطقية الأساسية والتحكم في مسار البيانات داخل معالجات الحاسوب.</p>
+        <div class="page-number">صفحة 2</div>
     </div>
 
-    <div class="question-block">
-        <div class="question-title">Q2</div>
-        <div class="question-text">
-            Determine whether the function f(x) = 2x + 5 from the set of integers to the set of integers is one-to-one. Explain your answer.
-        </div>
-        <div class="answer-title">الحل:</div>
-        <div class="answer-content">
-            <p>نعم، الدالة هي <strong>One-to-One (Injective)</strong> متباينة.</p>
-            <p><strong>التوضيح والإثبات الرياضي:</strong><br>
-            لإثبات أن الدالة متباينة، نفترض أن <span>f(x₁) = f(x₂)</span> ويجب أن نصل إلى أن <span>x₁ = x₂</span>:</p>
-            <div class="math-steps">
-                Let f(x₁) = f(x₂)<br>
-                2x₁ + 5 = 2x₂ + 5<br>
-                <br>
-                Subtract 5 from both sides:<br>
-                2x₁ = 2x₂<br>
-                <br>
-                Divide by 2:<br>
-                x₁ = x₂
-            </div>
-            <p>بما أن <span>x₁ = x₂</span> لكل العناصر في مجموعة الأعداد الصحيحة (𝐙)، فإن الدالة متباينة قطعاً.</p>
-        </div>
+    <div class="report-page">
+        <h3>2. دوائر الجمع الحسابية (Adders)</h3>
+        <p>تعد دوائر الجمع من أهم الدوائر التجميعية، حيث تُستخدم لبناء وحدة الحساب والمنطق (ALU) داخل المعالج، وتنقسم إلى نوعين:</p>
+        <ul>
+            <li><strong>الجامع النصفي (Half Adder):</strong> يقوم بجمع خانتين ثنائيتين (A و B) وينتج عنهما المجموع (Sum) وخانة الحمل (Carry). ولكنه لا يستطيع التعامل مع حمل قادم من خانة سابقة.</li>
+            <li><strong>الجامع الكامل (Full Adder):</strong> يقوم بجمع ثلاث خانات ثنائية (الخانتين الأساسيتين بالإضافة إلى الحمل القادم من المرحلة السابقة Cin)، وينتج المجموع (Sum) والحمل الجديد (Cout).</li>
+        </ul>
+
+        <h4 style="direction: ltr; text-align: left;">Truth Table for Full Adder:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>Cin</th>
+                    <th>Sum (S)</th>
+                    <th>Cout</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+        </table>
+        <div class="page-number">صفحة 3</div>
     </div>
 
-    <div class="question-block">
-        <div class="question-title">Q3</div>
-        <div class="question-text">
-            Let A = {a, b, c, d} and B = {1, 2, 3, 4}. Suppose that f(a)=1, f(b)=2, f(c)=3, and f(d)=4.<br>
-            State whether the function is injective, surjective, and bijective.
-        </div>
-        <div class="answer-title">الحل:</div>
-        <div class="answer-content">
-            <ul>
-                <li><strong>Injective (One-to-One) / متباينة:</strong> 
-                    <span style="color: green; font-weight: bold;">نعم</span>، لأن العناصر المختلفة في A لها صور مختلفة تماماً في B.
-                </li>
-                <li><strong>Surjective (Onto) / شاملة:</strong> 
-                    <span style="color: green; font-weight: bold;">نعم</span>، لأن المدى (Range) يساوي تماماً المجال المقابل (Codomain B)، حيث تم تغطية جميع العناصر {1, 2, 3, 4}.
-                </li>
-                <li><strong>Bijective (One-to-One Correspondence) / تقابلية:</strong> 
-                    <span style="color: green; font-weight: bold;">نعم</span>، بما أن الدالة متباينة (Injective) وشاملة (Surjective) في آن واحد، إذن الدالة هي <strong>Bijective</strong>.
-                </li>
-            </ul>
-        </div>
+    <div class="report-page">
+        <h3>3. الموزعات ومحددات البيانات (Multiplexers & Demultiplexers)</h3>
+        <p>تُستخدم هذه الدوائر للتحكم في تدفق وتوجيه البيانات عبر قنوات الاتصال وأنظمة الحاسوب:</p>
+        <ul>
+            <li><strong>الموزع (Multiplexer - MUX):</strong> هو دائرة تجميعية تمتلك عدة مدخلات ومخرج واحد فقط، ويتم تحديد أي من هذه المدخلات يمر إلى المخرج بواسطة خطوط التحكم والاختيار (Select Lines). يُشبه مفتاح الاختيار الدوار.</li>
+            <li><strong>موزع البيانات (Demultiplexer - DEMUX):</strong> يقوم بعمل عكسي تماماً للموزع، حيث يمتلك مدخلاً واحداً وعدة مخرجات، ويقوم بتوجيه إشارة الدخل إلى أحد المخرجات بناءً على خطوط الاختيار.</li>
+        </ul>
+        <p>تكمن أهمية هذه الدوائر في تخصص الأمن السيبراني في تصميم جدران الحماية على مستوى العتاد والتحكم الآمن في مسارات تداول البيانات الحساسة ومنع تسريبها.</p>
+        <div class="page-number">صفحة 4</div>
     </div>
 
-    <div class="question-block">
-        <div class="question-title">Q4</div>
-        <div class="question-text">
-            Perform the following matrix addition:<br>
-            A = [[2, 1], [3, 4]] &nbsp;&nbsp;&nbsp; B = [[5, -1], [0, 2]]<br>
-            Find A + B.
-        </div>
-        <div class="answer-title">الحل:</div>
-        <div class="answer-content">
-            <p>عند جمع مصفوفتين، نقوم بجمع العناصر المتناظرة:</p>
-            <div class="math-steps">
-                A + B = [<br>
-                &nbsp;&nbsp;[2 + 5, &nbsp;1 + (-1)],<br>
-                &nbsp;&nbsp;[3 + 0, &nbsp;4 + 2]<br>
-                ]<br><br>
-                A + B = [<br>
-                &nbsp;&nbsp;[7, 0],<br>
-                &nbsp;&nbsp;[3, 6]<br>
-                ]
-            </div>
-        </div>
+    <div class="report-page">
+        <h3>4. المشفرات ومحللات الشفرة (Encoders & Decoders)</h3>
+        <p>تُستخدم هذه الدوائر لتحويل صيغ البيانات وتسهيل فهمها من قبل العتاد أو المستخدم:</p>
+        <ul>
+            <li><strong>محلل الشفرة (Decoder):</strong> دائرة تستقبل مدخلات مشفرة بصيغة ثنائية (Binary) وتعمل على تفعيل مخرج واحد فقط من مخرجاتها المتعددة. من أشهر تطبيقاتها هو دائرة (BCD to 7-Segment Decoder) المستخدمة لعرض الأرقام على الشاشات الرقمية كالساعات والآلات الحاسبة.</li>
+            <li><strong>المشفر (Encoder):</strong> يقوم بالعملية العكسية لمحلل الشفرة، حيث يستقبل إشارة من أحد خطوط الدخل المتعددة ويقوم بتحويلها إلى شفرة ثنائية مضغوطة ومحددة.</li>
+        </ul>
+        <div class="page-number">صفحة 5</div>
     </div>
 
-    <div class="question-block">
-        <div class="question-title">Q5</div>
-        <div class="question-text">
-            Find the transpose of the following matrix:<br>
-            A = [[1, 2, 3], [4, 5, 6]]
-        </div>
-        <div class="answer-title">الحل:</div>
-        <div class="answer-content">
-            <p>منقول المصفوفة (Transpose) يتم فيه تحويل الصفوف إلى أعمدة والأعمدة إلى صفوف:</p>
-            <p>المصفوفة الأصلية ذات حجم 2×3، والمنقول سيكون بحجم 3×2:</p>
-            <div class="math-steps">
-                Aᵀ = [<br>
-                &nbsp;&nbsp;[1, 4],<br>
-                &nbsp;&nbsp;[2, 5],<br>
-                &nbsp;&nbsp;[3, 6]<br>
-                ]
-            </div>
-        </div>
+    <div class="report-page">
+        <h3>5. الخاتمة والمصادر</h3>
+        <p>في ختام هذا التقرير، نرى أن الدوائر التجميعية مثل الجوامع والموزعات والمشفرات تشكل البنية الوظيفية الأساسية لمعالجة البيانات وتوجيهها داخل الحواسيب. إن الفهم العميق لكيفية عمل هذه الدوائر يدعم المتخصصين في مجالات علوم الحاسوب والأمن السيبراني لتطوير بنى تحتية رقمية أكثر كفاءة وأماناً على مستوى المكونات المادية.</p>
+        
+        <h4 style="margin-top: 40px;">المصادر والمراجع (References):</h4>
+        <ol style="direction: ltr; text-align: left;">
+            <li>Digital Fundamentals (11th Edition) - Thomas L. Floyd.</li>
+            <li>Contemporary Logic Design - Randy H. Katz.</li>
+            <li>Department of Cyber Security Coursework - University of Tikrit.</li>
+        </ol>
+        <div class="page-number">صفحة 6</div>
     </div>
-
-</div>
 
 </body>
 </html>
