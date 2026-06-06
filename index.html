@@ -1,116 +1,123 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التقرير الثالث: الدوائر التتابعية - عبدالله احمد مطلك</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; line-height: 1.6; }
-        .report-page { max-width: 850px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 6px solid #9b59b6; page-break-after: always; }
-        .header { text-align: center; border-bottom: 2px dashed #9b59b6; padding-bottom: 20px; margin-bottom: 30px; }
-        .header h1 { color: #9b59b6; margin: 5px 0; font-size: 26px; }
-        .header h2 { color: #444; margin: 5px 0; font-size: 18px; }
-        .student-info { background: #f8f9fa; border-right: 5px solid #0056b3; padding: 15px; margin: 20px 0; border-radius: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .student-info div { font-size: 16px; }
-        .student-info strong { color: #9b59b6; }
-        h3 { color: #9b59b6; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; }
-        p, li { font-size: 16px; color: #454545; text-align: justify; }
-        .page-number { text-align: center; font-weight: bold; margin-top: 40px; color: #777; border-top: 1px solid #eee; padding-top: 10px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; direction: ltr; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-        th { background-color: #9b59b6; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>اختبار الأدب</title><style>
+body {
+    font-family: "Tahoma", sans-serif;
+    background: linear-gradient(to right, #dfe9f3, #ffffff);
+    margin: 0;
+    padding: 0;
+}
 
-    <div class="report-page">
-        <div class="header">
-            <h1>جامعة تكريت</h1>
-            <h2>كلية علوم الحاسوب والرياضيات</h2>
-            <h2>قسم الأمن السيبراني</h2>
-            <h2 style="margin-top: 15px; color: #2c3e50; font-weight: bold;">تقرير علمي بعنوان: الدوائر المنطقية التتابعية وعناصر الذاكرة</h2>
-        </div>
-        
-        <div style="text-align: center; margin: 50px 0;">
-            <p style="font-size: 18px; font-weight: bold;">مقدم إلى كلية علوم الحاسوب والرياضيات كجزء من متطلبات مادة التصميم المنطقي</p>
-        </div>
+.container {
+    width: 85%;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
 
-        <div class="student-info">
-            <div><strong>اسم الطالب:</strong> عبدالله احمد مطلك</div>
-            <div><strong>المرحلة:</strong> الأولى</div>
-            <div><strong>المادة:</strong> تصميم منطقي (Logic Design)</div>
-            <div><strong>نوع العمل:</strong> التقرير الثالث</div>
-        </div>
-        <div class="page-number">صفحة 1</div>
-    </div>
+.header {
+    text-align: center;
+    border-bottom: 3px solid #4a90e2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
 
-    <div class="report-page">
-        <h3>1. مقدمة في الدوائر المنطقية التتابعية (Sequential Logic Circuits)</h3>
-        <p>على عكس الدوائر التجميعية، فإن الدوائر التتابعية هي دوائر رقمية تمتلك القدرة على "التذكر". حيث تعتمد مخرجاتها في أي لحظة على المدخلات الحالية بالإضافة إلى **الحالة السابقة المحفوظة في الذاكرة**. هذا يعني أنها تحتوي على مسار تغذية راجعة (Feedback Loop) وعناصر تخزين تؤثر على آلية اتخاذ القرار الرقمي.</p>
-        <p>تعتبر الدوائر التتابعية المكون الأساسي لبناء الذاكرة العشوائية (RAM)، العدادات، ووحدات المعالجة المركزية، حيث يرتكز عليها الأمن السيبراني بشكل حاسم عند دراسة "أمن العتاد" وفهم الحالات الانتقالية للأنظمة الرقمية لمنع الثغرات الناجمة عن تداخل الحالات (Race Conditions).</p>
-        <div class="page-number">صفحة 2</div>
-    </div>
+.header h1 {
+    color: #4a90e2;
+    margin: 0;
+}
 
-    <div class="report-page">
-        <h3>2. عناصر التخزين الأساسية: القلابات (Flip-Flops)</h3>
-        <p>القلاب المنطقي هو وحدة البناء الأساسية للذاكرة الرقمية، وهو دائرة قادرة على تخزين خانة ثنائية واحدة (Bit واحد: إما 0 أو 1). توجد أنواع متعددة من القلابات، وتعمل غالباً بالتزامن مع إشارة الساعة (Clock Signal):</p>
-        <ul>
-            <li><strong>قلاب SR (SR Flip-Flop):</strong> يحتوي على مدخلين؛ S للضبط (Set) و R لإعادة الضبط (Reset). يعيبه وجود حالة غير معرفة عندما يكون كلا المدخلين 1.</li>
-            <li><strong>قلاب JK (JK Flip-Flop):</strong> يعالج مشكلة الحالة غير المعرفة في SR، حيث يؤدي إدخال 1 على كلا الطرفين إلى عكس الحالة السابقة (Toggle).</li>
-            <li><strong>قلاب D (D Flip-Flop):</strong> يسمى قلاب البيانات (Data)، وهو ينقل المدخل مباشرة إلى المخرج عند نبضة الساعة، ويُستخدم كثيراً في بناء مسجلات الحفظ.</li>
-        </ul>
+.header h2 {
+    color: #555;
+    margin: 5px 0;
+}
 
-        <h4 style="direction: ltr; text-align: left;">Truth Table for JK Flip-Flop:</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>J</th>
-                    <th>K</th>
-                    <th>Next State Q(t+1)</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>0</td><td>0</td><td>Q(t)</td><td>No Change (حفظ)</td></tr>
-                <tr><td>0</td><td>1</td><td>0</td><td>Reset (تصفير)</td></tr>
-                <tr><td>1</td><td>0</td><td>1</td><td>Set (تفعيل)</td></tr>
-                <tr><td>1</td><td>1</td><td>Q'(t)</td><td>Toggle (عكس)</td></tr>
-            </tbody>
-        </table>
-        <div class="page-number">صفحة 3</div>
-    </div>
+.info {
+    background: #f1f7ff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-    <div class="report-page">
-        <h3>3. مسجلات الإزاحة (Shift Registers)</h3>
-        <p>عند دمج مجموعة من القلابات (غالباً من النوع D) معاً على التوالي، نحصل على ما يسمى بـ **المسجل (Register)**. يُستخدم المسجل لتخزين عدة خانات ثنائية (مثل كلمة مكونة من 8 بت أو 16 بت).</p>
-        <p>أما **مسجلات الإزاحة**، فهي تسمح بنقل البيانات المخزنة من قلاب إلى القلاب المجاور له مع كل نبضة ساعة. تكمن أهميتها البالغة في تحويل البيانات من الصيغة التوالي (Serial) إلى الصيغة المتوازية (Parallel) والعكس، وهو الأمر الضروري جداً في شبكات الاتصال ونقل البيانات المشفرة آمنياً بين الحواسيب وملحقاتها.</p>
-        <div class="page-number">صفحة 4</div>
-    </div>
+.info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
 
-    <div class="report-page">
-        <h3>4. العدادات الرقمية (Digital Counters)</h3>
-        <p>العدادات هي تطبيقات مباشرة على الدوائر التتابعية، حيث تتنقل عبر تتابع محدد من الحالات الرقمية مع كل نبضة ساعة تصل إليها. تنقسم العدادات إلى نوعين رئيسيين:</p>
-        <ul>
-            <li><strong>العدادات غير المتزامنة (Asynchronous/Ripple Counters):</strong> في هذا النوع، لا تصل إشارة الساعة إلى جميع القلابات في نفس الوقت، بل يقوم مخرج القلاب الأول بتشغيل القلاب الذي يليه، مما يسبب تأخراً بسيطاً في الاستجابة.</li>
-            <li><strong>العدادات المتزامنة (Synchronous Counters):</strong> تتصل إشارة الساعة بجميع القلابات معاً في نفس اللحظة، مما يجعلها أسرع وأكثر دقة ومثالية للأنظمة عالية الأداء والأمان.</li>
-        </ul>
-        <p>تستخدم العدادات في توليد التوقيتات، وحساب الفترات الزمنية، وتوليد مفاتيح التشفير الدورية في أنظمة الأمن السيبراني.</p>
-        <div class="page-number">صفحة 5</div>
-    </div>
+.question {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-right: 5px solid #4a90e2;
+    background: #fafafa;
+    border-radius: 8px;
+}
 
-    <div class="report-page">
-        <h3>5. الخاتمة والمصادر</h3>
-        <p>في نهاية هذا التقرير، نرى أن الدوائر التتابعية تمثل القفزة النوعية في التصميم المنطقي، حيث نقلت الأنظمة الرقمية من مرحلة المعالجة الفورية البسيطة إلى مرحلة الحوسبة الذكية القائمة على تخزين البيانات وتتبع الحالات وتوقيت العمليات. إن إدراك آلية عمل الذاكرة والمسجلات يعتبر مهارة حتمية لطلبة الأمن السيبراني لتحليل سلوك العتاد وحماية البيانات المخزنة مؤقتاً.</p>
-        
-        <h4 style="margin-top: 40px;">المصادر والمراجع (References):</h4>
-        <ol style="direction: ltr; text-align: left;">
-            <li>Digital Systems: Principles and Applications - Ronald J. Tocci.</li>
-            <li>Introduction to Logic Design - Alan B. Marcovitz.</li>
-            <li>Academic Syllabus of Logic Design - University of Tikrit, 2026.</li>
-        </ol>
-        <div class="page-number">صفحة 6</div>
-    </div>
+.question strong {
+    color: #333;
+}
 
-</body>
+hr {
+    border: none;
+    height: 2px;
+    background: #4a90e2;
+    margin: 20px 0;
+}
+</style></head><body><div class="container"><div class="header">
+    <h1>اختبار مادة الأدب</h1>
+    <h2>الصف السادس</h2>
+</div>
+
+<div class="info">
+    <p><strong>اسم الطالبة:</strong> هيام</p>
+</div>
+
+<hr>
+
+<div class="question">
+    <strong>السؤال الأول:</strong><br>
+    ما أبرز القضايا والموضوعات التي تتناولها الرواية وتعرضها للقارئ؟
+</div>
+
+<div class="question">
+    <strong>السؤال الثاني:</strong><br>
+    قارن بين كلٍ مما يأتي:<br>
+    1- الرواية والسيرة<br>
+    2- الرواية والقصة القصيرة<br>
+    ثم وضّح: ماذا توحي لك الرواية؟
+</div>
+
+<div class="question">
+    <strong>السؤال الثالث:</strong><br>
+    لماذا تُعدّ الرواية من أهم الفنون الأدبية؟ وبماذا تتميز عن غيرها من الأجناس الأدبية؟
+</div>
+
+<div class="question">
+    <strong>السؤال الرابع:</strong><br>
+    اشرح أسباب نشأة الرواية العربية، وبيّن أبرز المؤثرات التي ساهمت في ظهورها.
+</div>
+
+<div class="question">
+    <strong>السؤال الخامس:</strong><br>
+    اذكر مراحل نشأة الرواية العربية، مع توضيح مختصر لكل مرحلة.
+</div>
+
+<div class="question">
+    <strong>السؤال السادس:</strong><br>
+    تحدث عن أول رواية أجنبية تُرجمت إلى اللغة العربية، مع ذكر اسمها، ومترجمها، وتاريخ ظهورها.
+</div>
+
+<div class="question">
+    <strong>السؤال السابع:</strong><br>
+    بيّن مدى استمرار حركة الترجمة بعد ترجمة رفاعة رافع الطهطاوي لرواية (فينيلون)، مع ذكر ما ترتب على ذلك.
+</div>
+
+<div class="question">
+    <strong>السؤال الثامن:</strong><br>
+    متى صدرت أول رواية عربية؟ ومن هو مؤلفها؟ مع ذكر اسم الرواية.
+</div>
+
+</div></body>
 </html>
