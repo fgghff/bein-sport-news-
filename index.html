@@ -11,17 +11,14 @@ body {
     background: #0f3b3b;
 }
 
-/* الإطار العام */
 .wrapper {
     width: 900px;
     margin: 30px auto;
     background: #f5efe6;
     border-radius: 25px;
     padding: 20px;
-    position: relative;
 }
 
-/* زخرفة أعلى */
 .top-bar {
     background: linear-gradient(to left, #0f3b3b, #1f6f6f);
     color: white;
@@ -31,7 +28,6 @@ body {
     font-size: 22px;
 }
 
-/* عنوان */
 .main-title {
     background: #2e8b83;
     color: white;
@@ -41,10 +37,20 @@ body {
     padding: 10px;
     border-radius: 20px;
     font-size: 24px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
-/* ورق ممزق */
+/* الملاحظة */
+.note {
+    background: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-right: 6px solid #f1c40f;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .paper {
     background: #fff;
     padding: 20px;
@@ -54,7 +60,6 @@ body {
     box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-/* شريط لاصق */
 .paper::before {
     content: "";
     position: absolute;
@@ -67,7 +72,6 @@ body {
     border-radius: 5px;
 }
 
-/* تنسيق الأسئلة */
 .question {
     margin-bottom: 15px;
     line-height: 2;
@@ -83,7 +87,6 @@ body {
     margin-right: 15px;
 }
 
-/* زخرفة أسفل */
 .footer {
     background: linear-gradient(to right, #c79b5a, #e6c28b);
     height: 25px;
@@ -100,6 +103,10 @@ body {
     <div class="top-bar">السادس الاعدادي</div>
 
     <div class="main-title">اختبار الأدب</div>
+
+    <div class="note">
+    ملاحظة: الإجابة عن أربعة أسئلة 
+    </div>
 
     <div class="paper">
 
