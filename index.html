@@ -1,123 +1,143 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>اختبار الأدب</title><style>
+<title>اختبار الأدب</title>
+
+<style>
 body {
+    margin: 0;
     font-family: "Tahoma", sans-serif;
-    background: linear-gradient(to right, #dfe9f3, #ffffff);
-    margin: 0;
-    padding: 0;
+    background: #0f3b3b;
 }
 
-.container {
-    width: 85%;
+/* الإطار العام */
+.wrapper {
+    width: 900px;
     margin: 30px auto;
-    background: #ffffff;
-    padding: 25px;
+    background: #f5efe6;
+    border-radius: 25px;
+    padding: 20px;
+    position: relative;
+}
+
+/* زخرفة أعلى */
+.top-bar {
+    background: linear-gradient(to left, #0f3b3b, #1f6f6f);
+    color: white;
+    padding: 15px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    text-align: right;
+    font-size: 22px;
 }
 
-.header {
+/* عنوان */
+.main-title {
+    background: #2e8b83;
+    color: white;
+    width: 300px;
+    margin: -25px auto 20px;
     text-align: center;
-    border-bottom: 3px solid #4a90e2;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    color: #4a90e2;
-    margin: 0;
-}
-
-.header h2 {
-    color: #555;
-    margin: 5px 0;
-}
-
-.info {
-    background: #f1f7ff;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
+    font-size: 24px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* ورق ممزق */
+.paper {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
     margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-.info p {
-    margin: 5px 0;
-    font-size: 16px;
+/* شريط لاصق */
+.paper::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: 40px;
+    width: 80px;
+    height: 25px;
+    background: #2e8b83;
+    transform: rotate(-8deg);
+    border-radius: 5px;
 }
 
+/* تنسيق الأسئلة */
 .question {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-right: 5px solid #4a90e2;
-    background: #fafafa;
-    border-radius: 8px;
+    margin-bottom: 15px;
+    line-height: 2;
+    font-size: 17px;
 }
 
-.question strong {
-    color: #333;
+.q {
+    color: #c0392b;
+    font-weight: bold;
 }
 
-hr {
-    border: none;
-    height: 2px;
-    background: #4a90e2;
-    margin: 20px 0;
+.sub {
+    margin-right: 15px;
 }
-</style></head><body><div class="container"><div class="header">
-    <h1>اختبار مادة الأدب</h1>
-    <h2>الصف السادس</h2>
+
+/* زخرفة أسفل */
+.footer {
+    background: linear-gradient(to right, #c79b5a, #e6c28b);
+    height: 25px;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="top-bar">السادس الاعدادي</div>
+
+    <div class="main-title">اختبار الأدب</div>
+
+    <div class="paper">
+
+        <div class="question">
+            <span class="q">س1/</span>
+            <div class="sub">أ- ما حال الأدب في العصر الحديث؟</div>
+            <div class="sub">ب- ما الحركات القديمة والجديدة التي ظهرت في الشعر العربي؟ وما الحركة المتوقدة التي ظهرت؟</div>
+        </div>
+
+        <div class="question">
+            <span class="q">س2/</span>
+            <div class="sub">أ- ما الذي ساعد في ظهور جيل الإحياء؟</div>
+            <div class="sub">ب- كيف تطورت أشكال القصيدة وهيئاتها مع العصر الحديث؟</div>
+        </div>
+
+        <div class="question">
+            <span class="q">س3/</span>
+            <div class="sub">أ- بم تميز شعر مدرسة الإحياء؟ وما الهدف من ذلك؟</div>
+            <div class="sub">ب- ما الاسم الكامل لشاعرنا الحبوبي ؟ متى ولد وماذا يُعد؟ وبم اشتهر ؟</div>
+        </div>
+
+        <div class="question">
+            <span class="q">س4/</span>
+            <div class="sub">أ- تكلم عن السيرة الجهادية لشاعرنا الحبوبي ؟</div>
+            <div class="sub">ب- أكتب سبعة أبيات حفظتها من موشحة يا غزال الكرخ مضبوطة بالشكل ؟</div>
+        </div>
+
+        <div class="question">
+            <span class="q">س5/</span>
+            <div class="sub">أ- هات معاني المفردات الآتية: (العطف - القد - العذل)</div>
+            <div class="sub">ب- ماذا تعرف عن عام 1798م؟</div>
+        </div>
+
+    </div>
+
+    <div class="footer"></div>
+
 </div>
 
-<div class="info">
-    <p><strong>اسم الطالبة:</strong> هيام</p>
-</div>
-
-<hr>
-
-<div class="question">
-    <strong>السؤال الأول:</strong><br>
-    ما أبرز القضايا والموضوعات التي تتناولها الرواية وتعرضها للقارئ؟
-</div>
-
-<div class="question">
-    <strong>السؤال الثاني:</strong><br>
-    قارن بين كلٍ مما يأتي:<br>
-    1- الرواية والسيرة<br>
-    2- الرواية والقصة القصيرة<br>
-    ثم وضّح: ماذا توحي لك الرواية؟
-</div>
-
-<div class="question">
-    <strong>السؤال الثالث:</strong><br>
-    لماذا تُعدّ الرواية من أهم الفنون الأدبية؟ وبماذا تتميز عن غيرها من الأجناس الأدبية؟
-</div>
-
-<div class="question">
-    <strong>السؤال الرابع:</strong><br>
-    اشرح أسباب نشأة الرواية العربية، وبيّن أبرز المؤثرات التي ساهمت في ظهورها.
-</div>
-
-<div class="question">
-    <strong>السؤال الخامس:</strong><br>
-    اذكر مراحل نشأة الرواية العربية، مع توضيح مختصر لكل مرحلة.
-</div>
-
-<div class="question">
-    <strong>السؤال السادس:</strong><br>
-    تحدث عن أول رواية أجنبية تُرجمت إلى اللغة العربية، مع ذكر اسمها، ومترجمها، وتاريخ ظهورها.
-</div>
-
-<div class="question">
-    <strong>السؤال السابع:</strong><br>
-    بيّن مدى استمرار حركة الترجمة بعد ترجمة رفاعة رافع الطهطاوي لرواية (فينيلون)، مع ذكر ما ترتب على ذلك.
-</div>
-
-<div class="question">
-    <strong>السؤال الثامن:</strong><br>
-    متى صدرت أول رواية عربية؟ ومن هو مؤلفها؟ مع ذكر اسم الرواية.
-</div>
-
-</div></body>
+</body>
 </html>
