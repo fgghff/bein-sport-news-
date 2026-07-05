@@ -8,74 +8,60 @@
 body {
     margin: 0;
     font-family: "Tahoma", sans-serif;
-    background: #0f3b3b;
+    background: #0e4b45;
 }
 
-.wrapper {
-    width: 900px;
-    margin: 30px auto;
-    background: #f5efe6;
-    border-radius: 25px;
+/* الإطار */
+.container {
+    width: 850px;
+    margin: 40px auto;
+    background: #f2eee7;
+    border-radius: 20px;
     padding: 20px;
 }
 
-.top-bar {
-    background: linear-gradient(to left, #0f3b3b, #1f6f6f);
+/* الشريط العلوي */
+.header {
+    background: #1f6f6f;
     color: white;
     padding: 15px;
     border-radius: 15px;
-    text-align: right;
-    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.main-title {
+.title {
     background: #2e8b83;
     color: white;
-    width: 300px;
-    margin: -25px auto 20px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 24px;
+    padding: 10px 30px;
+    border-radius: 15px;
+    margin: -25px auto 15px;
+    width: fit-content;
+    font-size: 20px;
 }
 
 /* الملاحظة */
 .note {
-    background: #fff3cd;
-    color: #856404;
-    padding: 12px;
-    border-right: 6px solid #f1c40f;
+    background: #e9d9a7;
+    padding: 10px;
     border-radius: 10px;
+    text-align: center;
     margin-bottom: 15px;
     font-weight: bold;
-    text-align: center;
 }
 
+/* الورقة */
 .paper {
-    background: #fff;
+    background: #f8f8f8;
     padding: 20px;
     border-radius: 15px;
-    margin-bottom: 20px;
-    position: relative;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-.paper::before {
-    content: "";
-    position: absolute;
-    top: -12px;
-    right: 40px;
-    width: 80px;
-    height: 25px;
-    background: #2e8b83;
-    transform: rotate(-8deg);
-    border-radius: 5px;
-}
-
+/* الأسئلة */
 .question {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 2;
-    font-size: 17px;
 }
 
 .q {
@@ -87,10 +73,12 @@ body {
     margin-right: 15px;
 }
 
+/* الشريط السفلي */
 .footer {
+    height: 20px;
     background: linear-gradient(to right, #c79b5a, #e6c28b);
-    height: 25px;
     border-radius: 10px;
+    margin-top: 15px;
 }
 </style>
 
@@ -98,46 +86,48 @@ body {
 
 <body>
 
-<div class="wrapper">
+<div class="container">
 
-    <div class="top-bar">السادس الاعدادي</div>
+    <div class="header">
+        <div>السادس الاعدادي</div>
+    </div>
 
-    <div class="main-title">اختبار الأدب</div>
+    <div class="title">اختبار الأدب</div>
 
     <div class="note">
-    ملاحظة: الإجابة عن أربعة أسئلة 
+        ملاحظة: الإجابة عن أربعة أسئلة
     </div>
 
     <div class="paper">
 
         <div class="question">
             <span class="q">س1/</span>
-            <div class="sub">أ- ما حال الأدب في العصر الحديث؟</div>
-            <div class="sub">ب- ما الحركات القديمة والجديدة التي ظهرت في الشعر العربي؟ وما الحركة المتوقدة التي ظهرت؟</div>
+            <div class="sub">أ ما حال الأدب في العصر الحديث؟</div>
+            <div class="sub">ب ما الحركات القديمة والجديدة التي ظهرت في الشعر العربي؟ وما الحركة المتوقدة التي ظهرت ؟</div>
         </div>
 
         <div class="question">
             <span class="q">س2/</span>
-            <div class="sub">أ- ما الذي ساعد في ظهور جيل الإحياء؟</div>
-            <div class="sub">ب- كيف تطورت أشكال القصيدة وهيئاتها مع العصر الحديث؟</div>
+            <div class="sub">أ ما الذي ساعد في ظهور جيل الإحياء؟</div>
+            <div class="sub">ب كيف تطورت أشكال القصيدة وهيئاتها مع العصر الحديث؟</div>
         </div>
 
         <div class="question">
             <span class="q">س3/</span>
-            <div class="sub">أ- بم تميز شعر مدرسة الإحياء؟ وما الهدف من ذلك؟</div>
-            <div class="sub">ب- ما الاسم الكامل لشاعرنا الحبوبي ؟ متى ولد وماذا يُعد؟ وبم اشتهر ؟</div>
+            <div class="sub">أ بم تميز شعر مدرسة الإحياء؟ وما الهدف من ذلك؟</div>
+            <div class="sub">ب ما الاسم الكامل لشاعرنا الحبوبي ؟ متى ولد وماذا يُعد؟ وبم اشتهر ؟</div>
         </div>
 
         <div class="question">
             <span class="q">س4/</span>
-            <div class="sub">أ- تكلم عن السيرة الجهادية لشاعرنا الحبوبي ؟</div>
-            <div class="sub">ب- أكتب سبعة أبيات حفظتها من موشحة يا غزال الكرخ مضبوطة بالشكل ؟</div>
+            <div class="sub">أ تكلم عن السيرة الجهادية لشاعرنا الحبوبي ؟</div>
+            <div class="sub">ب أكتب سبعة أبيات حفظتها من موشحة يا غزال الكرخ مضبوطة بالشكل ؟</div>
         </div>
 
         <div class="question">
             <span class="q">س5/</span>
-            <div class="sub">أ- هات معاني المفردات الآتية: (العطف - القد - العذل)</div>
-            <div class="sub">ب- ماذا تعرف عن عام 1798م؟</div>
+            <div class="sub">أ هات معاني المفردات الآتية: (العطف - القد - العذل)</div>
+            <div class="sub">ب ماذا تعرف عن عام 1798م؟</div>
         </div>
 
     </div>
