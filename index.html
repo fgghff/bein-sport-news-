@@ -3,141 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>اختبار الأدب</title>
-
-<!-- خط عربي احترافي -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: 'Cairo', sans-serif;
-    background: #0e4b45;
+    font-family: Arial, sans-serif;
+    background: #0f4c45;
 }
 
-/* الحاوية */
 .container {
     max-width: 900px;
-    margin: 30px auto;
-    background: #f2eee7;
-    border-radius: 20px;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 10px;
 }
 
-/* الهيدر */
 .header {
-    background: #1f6f6f;
+    background: #1f6f63;
     color: white;
     padding: 15px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.title {
-    background: #2e8b83;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 15px;
-    margin: -25px auto 15px;
-    width: fit-content;
-    font-size: 20px;
-}
-
-/* الملاحظة */
-.note {
-    background: #e9d9a7;
-    padding: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
-    margin-bottom: 15px;
-    font-weight: bold;
+    position: relative;
 }
 
-/* الورقة */
-.paper {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 15px;
+.header span {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 14px;
 }
 
-/* الأسئلة */
-.question {
-    margin-bottom: 20px;
-    line-height: 2.2;
-    font-size: 16px;
+.notice {
+    background: #f3e5ab;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
 }
 
-.q {
-    color: #c0392b;
-    font-weight: bold;
-}
-
-.sub {
-    margin-right: 15px;
-}
-
-/* الفوتر */
-.footer {
-    height: 20px;
-    background: linear-gradient(to right, #c79b5a, #e6c28b);
-    border-radius: 10px;
+.card {
+    background: #eee;
     margin-top: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    line-height: 1.8;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+.q-number {
+    color: red;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 5px;
+    }
+
+    .header {
+        font-size: 16px;
+    }
+
+    .card {
+        font-size: 14px;
+    }
 }
 </style>
 
 </head>
-
 <body>
 
 <div class="container">
 
     <div class="header">
-        <div>السادس الاعدادي</div>
+        <span>السادس الاعدادي</span>
+        اختبار الأدب
     </div>
 
-    <div class="title">اختبار الأدب</div>
-
-    <div class="note">
+    <div class="notice">
         ملاحظة: الإجابة عن أربعة أسئلة
     </div>
 
-    <div class="paper">
+    <div class="card">
 
         <div class="question">
-            <span class="q">س1/</span>
-            <div class="sub">أ- ما حال الأدب في العصر الحديث؟</div>
-            <div class="sub">ب- ما الحركات القديمة والجديدة التي ظهرت في الشعر العربي؟ وما الحركة المتوقدة التي ظهرت ؟</div>
+            <span class="q-number">س1/</span>
+            <p>أ- ما حال الأدب في العصر الحديث؟</p>
+            <p>ب- ما الحركات القديمة والجديدة التي ظهرت في الشعر العربي؟ وما الحركة المتوقعة التي ظهرت؟</p>
         </div>
 
         <div class="question">
-            <span class="q">س2/</span>
-            <div class="sub">أ- ما الذي ساعد في ظهور جيل الإحياء؟</div>
-            <div class="sub">ب- كيف تطورت أشكال القصيدة وهيئاتها مع العصر الحديث؟</div>
+            <span class="q-number">س2/</span>
+            <p>أ- ما الذي ساعد في ظهور جيل الإحياء؟</p>
+            <p>ب- كيف تطورت أشكال القصيدة وفنونها في العصر الحديث؟</p>
         </div>
 
         <div class="question">
-            <span class="q">س3/</span>
-            <div class="sub">أ- بم تميز شعر مدرسة الإحياء؟ وما الهدف من ذلك؟</div>
-            <div class="sub">ب- ما الاسم الكامل لشاعرنا الحبوبي ؟ متى ولد وماذا يُعد؟ وبم اشتهر ؟</div>
+            <span class="q-number">س3/</span>
+            <p>أ- بم تميز شعر مدرسة الإحياء؟ وما الهدف من ذلك؟</p>
+            <p>ب- ما الاسم الكامل لشاعرنا الجواهري؟ متى ولد وأين؟ ومتى توفي؟</p>
         </div>
 
         <div class="question">
-            <span class="q">س4/</span>
-            <div class="sub">أ- تكلم عن السيرة الجهادية لشاعرنا الحبوبي ؟</div>
-            <div class="sub">ب- أكتب سبعة أبيات حفظتها من موشحة يا غزال الكرخ مضبوطة بالشكل ؟</div>
+            <span class="q-number">س4/</span>
+            <p>أ- تكلم عن السيرة الذاتية للشاعر الجواهري؟</p>
+            <p>ب- اكتب سبعة أبيات من قصيدته موضحة مع إعراب الكلمة المطلوبة بالشكل؟</p>
         </div>
 
         <div class="question">
-            <span class="q">س5/</span>
-            <div class="sub">أ- هات معاني المفردات الآتية: (العطف - القد - العذل)</div>
-            <div class="sub">ب- ماذا تعرف عن عام 1798م؟</div>
+            <span class="q-number">س5/</span>
+            <p>أ- هات معاني المفردات الآتية: (العطف - القف - العدل)</p>
+            <p>ب- ماذا تعرف عن عام 1798م؟</p>
         </div>
 
     </div>
-
-    <div class="footer"></div>
 
 </div>
 
